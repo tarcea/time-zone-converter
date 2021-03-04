@@ -1,0 +1,32 @@
+{
+    "cities": [
+        {
+            "name" : "Stockholm",
+            "images": ["https://timezone-converter.globuzzer.com/images/Stockholm.jpg", "https://timezone-converter.globuzzer.com/images/Stockholm2.jpg"]
+        },
+        {
+            "name" : "Copenhagen",
+            "images": ["https://timezone-converter.globuzzer.com/images/Copenhagen.jpg", "https://timezone-converter.globuzzer.com/images/Copenhagen2.jpg"]
+        },
+        {
+            "name" : "Helsinki",
+            "images": ["https://timezone-converter.globuzzer.com/images/Helsinki.jpg"]
+        },
+        {
+            "name" : "London",
+            "images": ["https://timezone-converter.globuzzer.com/images/London.jpg"]
+        },
+        {
+            "name" : "Oslo",
+            "images": ["https://timezone-converter.globuzzer.com/images/Oslo.jpg", "https://timezone-converter.globuzzer.com/images/Oslo2.jpg"]
+        },
+        {
+            "name" : "Lisbon",
+            "images": ["https://timezone-converter.globuzzer.com/images/Lisbon1.jpg", "https://timezone-converter.globuzzer.com/images/Lisbon2.jpg"]
+        },
+        {
+            "name" : "Rome",
+            "images": ["https://timezone-converter.globuzzer.com/images/Rome1.jpg", "https://timezone-converter.globuzzer.com/images/Rome2.jpg", "https://timezone-converter.globuzzer.com/images/Rome3.jpg"]
+        }
+    ]
+}
