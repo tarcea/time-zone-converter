@@ -1,0 +1,16 @@
+.navBar {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #333;
+    height: 4.2rem;
+    opacity: 0.6;
+    color: white;
+    line-height: 40px;
+    font-family: 'Roberto', sans-serif;
+    font-weight: 400;
+  }
