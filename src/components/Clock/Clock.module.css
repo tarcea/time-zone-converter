@@ -1,0 +1,14 @@
+.Clock {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    visibility: visible;
+    color: #d10e1e;
+    width: 80px;
+    height: 80px;
+    background: url(https://timezone-converter.globuzzer.com/images/gb_logo.png) 50% 50% no-repeat;
+    border: 2px solid #172839;
+    border-radius: 106px;
+    position: relative;
+    background-size: cover;
+    margin: auto;
+}
