@@ -27,7 +27,7 @@ useEffect(() => {
    return (
      <div>
       <NavBar />
-     <Clock secondRatio={secondRatio} minuteRatio={minuteRatio} hourRatio={hourRatio}/>
+      <Clock secondRatio={secondRatio} minuteRatio={minuteRatio} hourRatio={hourRatio}/>
      </div>
    );
 }
