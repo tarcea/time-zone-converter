@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
-import NavBar from "./components/navbar"
+import NavBar from "./components/NavBar/navbar"
 import Clock from "./components/Clock/Clock.js"
 
 function App() {
@@ -30,8 +30,6 @@ useEffect(() => {
      <Clock secondRatio={secondRatio} minuteRatio={minuteRatio} hourRatio={hourRatio}/>
      </div>
    );
- 
-
 }
 
 export default App;
