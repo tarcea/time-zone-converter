@@ -6,7 +6,7 @@ export default function Navbar() {
         <>
             <ul className={styles.navBar}>
                 <li className={styles.logo}>
-                    <a href="https://globuzzer.com/" target="_blank">GLOBUZZER</a>
+                    <a href="https://globuzzer.com/" target="_blank" rel="noopener noreferrer">GLOBUZZER</a>
                 </li>
                 <li>Help</li>
             </ul>

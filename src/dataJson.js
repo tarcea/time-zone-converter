@@ -1,4 +1,4 @@
-{
+const data = {
     "cities": [
         {
             "name" : "Stockholm",
@@ -37,3 +37,5 @@
         }
     ]
 }
+
+export default data;

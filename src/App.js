@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import './App.css';
-import NavBar from "./components/NavBar/navbar"
-import Clock from "./components/Clock/Clock.js"
+import NavBar from "./components/NavBar/navbar";
+import Clock from "./components/Clock/Clock.js";
+import data from './dataJson';
 
 function App() {
   const [ secondRatio, setSecondRatio ] = useState(0);
@@ -18,7 +19,6 @@ useEffect(() => {
     let currentDate = new Date();
     let secondRatio = currentDate.getSeconds() * 60;
     let minuteRatio = currentDate.getMinutes() * 60;
-    let hourRatio = currentDate.getHours() * 12 + currentDate.getMinutes() * (60 / 12);
     setSecondRatio(currentDate.getSeconds() / 60)
     setMinuteRatio(secondRatio + currentDate.getMinutes() / 60);
     setHourRatio(minuteRatio + currentDate.getHours() / 12);
