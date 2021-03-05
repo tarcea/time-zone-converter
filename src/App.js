@@ -9,7 +9,6 @@ function App() {
 
 
 const citiesArray = data.cities.slice();
-
    return (
      <div>
       <NavBar />
