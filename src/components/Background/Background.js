@@ -1,21 +1,34 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
-export default function Background() {
+export default function Background(props) {
+    const { citiesArray } = props;
+    const [ cityIndex, setCityIndex ] = useState(0)
 
-    const shuffleArray = array => {
-        for (let i= array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            const temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
+  useEffect(() => {
+    setInterval(()=> {
+        changeBackgroundImageIndex()
+  }, 16000);
+}, );
+    
+    const changeBackgroundImageIndex = () => {
+        if ( cityIndex <= 12 ) {
+            setCityIndex( cityIndex + 1 )
+        } if (cityIndex === 13) {
+            setCityIndex(0);
         }
-        return array
     }
-      console.log(shuffleArray(["a","b","c"]))
+
+    const displayBackgroundImageAndBtn = (array) => {
+        return (
+            console.log(array)
+                // <img {array[cityIndex].image} />
+                // <button>{array[cityIndex].name}</button>
+        )
+    }
 
     return (
         <div>
-           {shuffleArray([1,2,3])}
+            {displayBackgroundImageAndBtn(citiesArray)}
         </div>
     )
 }
