@@ -3,6 +3,7 @@ import './App.css';
 import NavBar from "./components/NavBar/navbar";
 import Clock from "./components/Clock/Clock.js";
 import data from './dataJson';
+import Background from './components/Background/Background'
 
 function App() {
   const [ secondRatio, setSecondRatio ] = useState(0);
@@ -28,6 +29,7 @@ useEffect(() => {
      <div>
       <NavBar />
       <Clock secondRatio={secondRatio} minuteRatio={minuteRatio} hourRatio={hourRatio}/>
+      <Background />
      </div>
    );
 }
