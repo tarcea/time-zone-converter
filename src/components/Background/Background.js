@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import styles from './Background.module.css';
 
 export default function Background(props) {
     const { citiesArray } = props;
@@ -24,14 +25,14 @@ export default function Background(props) {
     const displayBackgroundImageAndBtn = (array) => {
         return (
             <>
-                <img src={array[cityIndex].image} />
-                <button>{array[cityIndex].name}</button>
+                <img src={array[cityIndex].image} className={styles.BackgroundImages}/>
+                <button className={styles.cityButton}>{array[cityIndex].name}</button>
             </>
         )
     }
 
     return (
-        <div>
+        <div className={styles.HomeBackgroundDiv}>
             {displayBackgroundImageAndBtn(citiesArray)}
         </div>
     )
