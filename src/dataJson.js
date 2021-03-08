@@ -13,7 +13,7 @@ const data = {
         {
             "name": "Rome",
             "image": "https://timezone-converter.globuzzer.com/images/Rome3.jpg",
-            "cityUrl": "" 
+            "cityUrl": "https://globuzzer.mn.co/groups/195833/feed" 
         },
         {
             "name" : "Helsinki",

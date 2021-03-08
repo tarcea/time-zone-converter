@@ -25,8 +25,8 @@ export default function Background(props) {
     const displayBackgroundImageAndBtn = (array) => {
         return (
             <>
-                <img src={array[cityIndex].image} className={styles.BackgroundImages}/>
-                <button className={`${styles.cityButton} ${styles.Btn}`}>Discover {array[cityIndex].name}</button>
+                <img src={array[cityIndex].image} className={styles.BackgroundImages} alt={array[cityIndex].name}/>
+                <a className={styles.cityLink} href={array[cityIndex].cityUrl} target="_blank" rel="noopener noreferrer"><button className={`${styles.cityButton} ${styles.Btn}`} >Discover {array[cityIndex].name}</button></a>
             </>
         )
     }

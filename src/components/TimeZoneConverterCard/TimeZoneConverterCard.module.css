@@ -1,0 +1,10 @@
+.CardHeader {
+    background-color: lightblue;
+    width: 315px;
+    height: 500px;
+}
+
+.CardHeader {
+    display: flex;
+    text-align: center;
+}
