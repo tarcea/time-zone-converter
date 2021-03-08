@@ -1,10 +1,22 @@
-.CardHeader {
-    background-color: lightblue;
-    width: 315px;
-    height: 500px;
+.CardBackground {
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 350px;
+    height: 410px;
+    border-radius: 8%;
+    margin-left: 10vw;
 }
 
 .CardHeader {
     display: flex;
     text-align: center;
+    box-sizing: content-box;
+    padding: 10% 5% 3% 5%;
+}
+
+.CardHeader > p {
+    display: flex;
+    align-items: center;
+    font-size: 19px;
+    font-weight: bold;
+    color: #cf4848;
 }
