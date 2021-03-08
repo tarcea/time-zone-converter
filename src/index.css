@@ -1,4 +1,14 @@
+html,
+#root {
+  height: 100%;
+}
+
+#root > div {
+  height: 100%;
+}
+
 body {
+  height: 100%;
   margin: 0;
   font-family: 'Roboto', sans-serif;
   font-weight: 400;

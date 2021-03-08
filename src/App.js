@@ -13,7 +13,9 @@ const citiesArray = data.cities.slice();
      <div>
       <NavBar />
       <Background citiesArray={citiesArray} />
+      <div className="content_wrapper">
       <TimeZoneConverterCard />
+      </div>
      </div>
    );
 }
