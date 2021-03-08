@@ -16,3 +16,14 @@
     font-weight: 400;
     position: absolute;
   }
+
+.logoImg {
+  color: white;
+  width: 150px;
+  height: 20px;
+
+  }
+
+li {
+  height: 30px;
+  }

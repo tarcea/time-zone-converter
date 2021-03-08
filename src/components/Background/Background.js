@@ -26,7 +26,7 @@ export default function Background(props) {
         return (
             <>
                 <img src={array[cityIndex].image} className={styles.BackgroundImages}/>
-                <button className={styles.cityButton}>{array[cityIndex].name}</button>
+                <button className={`${styles.cityButton} ${styles.Btn}`}>Discover {array[cityIndex].name}</button>
             </>
         )
     }
