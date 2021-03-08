@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './navbar.module.css';
+import logo from "../../assets/globuzzerLogo.png"
 
 export default function Navbar() {
     return (
@@ -8,7 +9,7 @@ export default function Navbar() {
                 <li className={styles.logo}>
                     <a href="https://globuzzer.com/" target="_blank" rel="noopener noreferrer">
                         <img 
-                        src={require("../../assets/globuzzerLogo.png").default}
+                        src={logo}
                         alt="Globuzzer"
                         />
                     </a>
