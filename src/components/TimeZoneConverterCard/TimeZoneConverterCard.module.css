@@ -81,3 +81,14 @@
     color: #8c8c8c;
     font-weight: bold;
 }
+
+.CardFooter {
+    display: flex;
+    justify-content: end;
+}
+
+.CalendarIcon {
+    color: #cc4747;
+    margin-right: 15px;
+    cursor: pointer;
+}

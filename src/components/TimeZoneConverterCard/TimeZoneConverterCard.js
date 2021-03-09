@@ -67,7 +67,10 @@ export default function TimeZoneConverterCard() {
             </div>
 
             <div className={styles.CardFooter}>
-                <FontAwesomeIcon icon={faCalendarAlt} />
+                <FontAwesomeIcon icon={faCalendarAlt} className={styles.CalendarIcon} />
+                <div>12</div>
+                <div>24</div>
+
 
             </div>
         </div>
