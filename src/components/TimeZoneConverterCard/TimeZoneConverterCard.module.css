@@ -52,8 +52,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: #cc4747;
-    opacity: 0.9;
+    background-color: rgba(204, 71, 71, 0.9);
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     padding-left: 8px;
