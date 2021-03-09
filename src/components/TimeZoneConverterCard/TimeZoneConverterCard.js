@@ -3,6 +3,8 @@ import styles from './TimeZoneConverterCard.module.css';
 import Clock from "../Clock/Clock";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 
 
 export default function TimeZoneConverterCard() {
@@ -65,7 +67,8 @@ export default function TimeZoneConverterCard() {
             </div>
 
             <div className={styles.CardFooter}>
-                
+                <FontAwesomeIcon icon={faCalendarAlt} />
+
             </div>
         </div>
     )
