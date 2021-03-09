@@ -5,10 +5,25 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
-
+import * as moment from 'moment';
 
 export default function TimeZoneConverterCard() {
     const [startDate, setStartDate] = useState(new Date());
+    const [startDate2, setStartDate2] = useState(new Date());
+    const [week, setWeek] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
+    const [week2, setWeek2] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
+
+    function getData (data) {
+        const w = moment(data).format("W");
+        setWeek(`w. ${parseInt(w) + 1}`);
+        setStartDate(data);
+    }
+    
+    function getData2 (data) {
+        const w = moment(data).format("W");
+        setWeek2(`w. ${parseInt(w) + 1}`);
+        setStartDate2(data);
+    }
 
     return (
         <div className={styles.CardBackground}>
@@ -27,10 +42,10 @@ export default function TimeZoneConverterCard() {
                         </form>
                         <div className={styles.DateWeekTimeDiv}>
                             <div className={styles.leftInput}>
-                                <DatePicker className={styles.DatePicker} selected={startDate} onChange={date => setStartDate(date)} />
+                                <DatePicker className={styles.DatePicker} selected={startDate} onChange={date => getData(date)}/>
                             </div>
                             <div className="middleInput">
-                                <p>w. 11</p>
+                                <input type="text" readOnly placeholder={week}/>
                             </div>
                             <div className="rightInput">
                                 {new Date().toLocaleTimeString()}
@@ -51,10 +66,10 @@ export default function TimeZoneConverterCard() {
                         </form>
                         <div className={styles.DateWeekTimeDiv}>
                             <div className={styles.leftInput}>
-                                <DatePicker className={styles.DatePicker} selected={startDate} onChange={date => setStartDate(date)} />
+                                <DatePicker className={styles.DatePicker} selected={startDate2} onChange={date => getData2(date)} />
                             </div>
                             <div className="middleInput">
-                                <p>w. 11</p>
+                                <input type="text" readOnly placeholder={week2}/>
                             </div>
                             <div className="rightInput">
                                 {new Date().toLocaleTimeString()}
