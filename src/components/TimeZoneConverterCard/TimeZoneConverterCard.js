@@ -16,7 +16,7 @@ export default function TimeZoneConverterCard() {
             </div>
             <div className={styles.formDiv}>
                 <div>
-                    <p className={styles.TimeZoneText}> My Location Time Zone</p>
+                    <p className={styles.TimeZoneText}> My location time zone</p>
                 </div>
                 <div className={styles.CurrentTimeZone}>
                     <div className="formGroup">
@@ -36,14 +36,16 @@ export default function TimeZoneConverterCard() {
                         </div>
                     </div>
                 </div>
+
+                <hr />
                     
                 <div>
-                    <p className={styles.TimeZoneText}> My Location Time Zone</p>
+                    <p className={styles.TimeZoneText}> Meeting location time zone</p>
                 </div>
                 <div className={styles.CurrentTimeZone}>
                     <div className="formGroup">
                         <form className={styles.UserLocation}>
-                            <input className={styles.LocationInput} type="text" name="userLocation" placeholder="Your location..." required></input>
+                            <input className={styles.LocationInput} type="text" name="meetingLocation" placeholder="Remote location..." required></input>
                         </form>
                         <div className={styles.DateWeekTimeDiv}>
                             <div className={styles.leftInput}>
@@ -59,9 +61,12 @@ export default function TimeZoneConverterCard() {
                     </div>
                 </div>
 
-
+                <hr />
             </div>
-            <div className={styles.CardFooter}></div>
+
+            <div className={styles.CardFooter}>
+                
+            </div>
         </div>
     )
 }
