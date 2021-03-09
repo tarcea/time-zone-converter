@@ -24,8 +24,17 @@ export default function TimeZoneConverterCard() {
                         </div>
                     </div>
                 </div>
-                <div className={styles.MeetingTimeZone}>
-                <div className="formGroup">
+
+                
+            </div>
+            <div className={styles.CardFooter}></div>
+        </div>
+    )
+}
+
+/*
+                    <div className={styles.MeetingTimeZone}>
+                    <div className="formGroup">
                         <div className="leftInput">
                             <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
                         </div>
@@ -34,8 +43,4 @@ export default function TimeZoneConverterCard() {
                         </div>
                     </div>
                 </div>
-                <div className={styles.CardFooter}></div>
-            </div>
-        </div>
-    )
-}
+*/
