@@ -7,25 +7,37 @@ import "react-datepicker/dist/react-datepicker.css"
 
 export default function TimeZoneConverterCard() {
     const [startDate, setStartDate] = useState(new Date());
+    
     return (
         <div className={styles.CardBackground}>
             <div className={styles.CardHeader}>
                 <p className={styles.TitleText}>TIME ZONE CONVERTER</p>
                 <Clock />
             </div>
-            <div className="form">
+            <div className={styles.formDiv}>
+                <div>
+                    <p className={styles.TimeZoneText}> My Location Time Zone</p>
+                </div>
                 <div className={styles.CurrentTimeZone}>
                     <div className="formGroup">
-                        <div className="leftInput">
-                            <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
-                        </div>
-                        <div className="middleInput"></div>
-                        <div className="rightInput">
+                        <form className={styles.UserLocation}>
+                            <input className={styles.LocationInput} type="text" name="userLocation" placeholder="Your location..." required></input>
+                        </form>
+                        <div className={styles.DateWeekTimeDiv}>
+                            <div className={styles.leftInput}>
+                                <DatePicker className={styles.DatePicker} selected={startDate} onChange={date => setStartDate(date)} />
+                            </div>
+                            <div className="middleInput">
+                                <p>w. 11</p>
+                            </div>
+                            <div className="rightInput">
+                                {new Date().toLocaleTimeString()}
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                
+
             </div>
             <div className={styles.CardFooter}></div>
         </div>
