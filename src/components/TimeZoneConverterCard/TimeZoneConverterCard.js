@@ -76,16 +76,3 @@ export default function TimeZoneConverterCard() {
         </div>
     )
 }
-
-/*
-                    <div className={styles.MeetingTimeZone}>
-                    <div className="formGroup">
-                        <div className="leftInput">
-                            <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
-                        </div>
-                        <div className="middleInput"></div>
-                        <div className="rightInput">
-                        </div>
-                    </div>
-                </div>
-*/
