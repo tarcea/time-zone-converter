@@ -57,7 +57,7 @@
     display: flex;
 }
 
-.form > div {
+/* .form > div {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -82,4 +82,4 @@
     display: flex;
     align-items: space-between;
     flex-wrap: wrap;
-}
+} */

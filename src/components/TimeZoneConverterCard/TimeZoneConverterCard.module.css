@@ -5,6 +5,7 @@
     border-radius: 8%;
     margin: 0 0 11vh 10vw;
     box-sizing: content-box;
+    padding: 0% 3% 0% 3%;
 }
 
 .CardHeader {
@@ -21,4 +22,74 @@
     font-size: 19px;
     font-weight: bold;
     color: #cf4848;
+}
+
+.CurrentTimeZone {
+    border: 1px solid #e75152;
+    border-radius: 11px;
+    margin-bottom: 10px;
+}
+
+.UserLocation {
+    width: 100%;
+    overflow: hidden;
+}
+
+.LocationInput {
+    width: 94%;
+    height: 40px;
+    float: left;
+    padding: 0% 2%;
+    background: transparent;
+    color: #797979;
+    font-weight: bold;
+    border: none;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.DateWeekTimeDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #cc4747;
+    opacity: 0.9;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    height: 40px;
+    color: white;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.DatePicker {
+    background: transparent;
+    border: none;
+    font-size: 17px;
+    width: 150px;
+    color: white;
+    font-weight: 700;
+    
+}
+
+.TimeZoneText {
+    margin-bottom: 5px;
+    margin-left: 2px;
+    margin-top: 5px;
+    font-size: 14px;
+    color: #8c8c8c;
+    font-weight: bold;
+}
+
+.CardFooter {
+    display: flex;
+    justify-content: end;
+}
+
+.CalendarIcon {
+    color: #cc4747;
+    margin-right: 15px;
+    cursor: pointer;
 }

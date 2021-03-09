@@ -8,16 +8,16 @@ import TimeZoneConverterCard from './components/TimeZoneConverterCard/TimeZoneCo
 function App() {
 
 
-const citiesArray = data.cities.slice();
-   return (
-     <div>
+  const citiesArray = data.cities.slice();
+  return (
+    <div>
       <NavBar />
       <Background citiesArray={citiesArray} />
       <div className="content_wrapper">
-      <TimeZoneConverterCard />
+        <TimeZoneConverterCard />
       </div>
-     </div>
-   );
+    </div>
+  );
 }
 
 export default App;
