@@ -21,7 +21,6 @@ export default function Background(props) {
         }
     }
 
-    console.log(cityIndex, "cityIndex")
     const displayBackgroundImageAndBtn = (array) => {
         return (
             <>
