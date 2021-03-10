@@ -17,7 +17,6 @@ function App() {
       <div className="content_wrapper">
         <TimeZoneConverterCard />
       </div>
-      <AutocompleteInput />
     </div>
   );
 }

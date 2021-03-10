@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 import * as moment from 'moment';
+import AutocompleteInput from '../../components/AutocompleteInput/AutocompleteInput'
 
 export default function TimeZoneConverterCard() {
     const [startDate, setStartDate] = useState(new Date());
@@ -38,7 +39,7 @@ export default function TimeZoneConverterCard() {
                 <div className={styles.CurrentTimeZone}>
                     <div className="formGroup">
                         <form className={styles.UserLocation}>
-                            <input className={styles.LocationInput} type="text" name="userLocation" placeholder="Your location..." required></input>
+                            <AutocompleteInput />
                         </form>
                         <div className={styles.DateWeekTimeDiv}>
                             <div className={styles.leftInput}>

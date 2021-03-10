@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import styles from '../TimeZoneConverterCard/TimeZoneConverterCard.module.css'
 import usePlacesAutocomplete, {
     getGeocode,
     getLatLng,
@@ -75,7 +76,7 @@ export default function AutocompleteInput() {
             value={value}
             onChange={handleInput}
             disabled={!ready}
-            placeholder="Where are you going?"
+            placeholder="Your location...?"
           />
           {/* We can use the "status" to decide whether we should display the dropdown or not */}
           {status === "OK" && <ul>{renderSuggestions()}</ul>}
