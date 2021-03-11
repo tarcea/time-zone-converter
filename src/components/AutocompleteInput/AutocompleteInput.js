@@ -14,7 +14,9 @@ import {
   } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 
-export default function AutocompleteInput() {
+export default function AutocompleteInput(props) {
+
+    const {placeholder} = props
 
     const {
         ready,
@@ -76,7 +78,7 @@ export default function AutocompleteInput() {
             value={value}
             onChange={handleInput}
             disabled={!ready}
-            placeholder="Your location...?"
+            placeholder={placeholder}
           />
           {/* We can use the "status" to decide whether we should display the dropdown or not */}
           {status === "OK" && <ul>{renderSuggestions()}</ul>}

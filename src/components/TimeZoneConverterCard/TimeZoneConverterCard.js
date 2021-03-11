@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 import * as moment from 'moment';
 import AutocompleteInput from '../../components/AutocompleteInput/AutocompleteInput'
+import PlacesAutocomplete from '../AutoCompleteCombobox/AutoCompleteCombobx'
 
 export default function TimeZoneConverterCard() {
     const [startDate, setStartDate] = useState(new Date());
@@ -39,7 +40,7 @@ export default function TimeZoneConverterCard() {
                 <div className={styles.CurrentTimeZone}>
                     <div className="formGroup">
                         <form className={styles.UserLocation}>
-                            <AutocompleteInput />
+                            <PlacesAutocomplete placeholder={"Your location ..."} />
                         </form>
                         <div className={styles.DateWeekTimeDiv}>
                             <div className={styles.leftInput}>
@@ -63,7 +64,7 @@ export default function TimeZoneConverterCard() {
                 <div className={styles.CurrentTimeZone}>
                     <div className="formGroup">
                         <form className={styles.UserLocation}>
-                            <input className={styles.LocationInput} type="text" name="meetingLocation" placeholder="Remote location..." required></input>
+                            <PlacesAutocomplete placeholder={"Remote location..."}/>
                         </form>
                         <div className={styles.DateWeekTimeDiv}>
                             <div className={styles.leftInput}>
