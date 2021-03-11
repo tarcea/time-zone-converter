@@ -5,9 +5,12 @@ import {
     ComboboxPopover,
     ComboboxList,
     ComboboxOption,
+    ComboboxOptionText,
 } from "@reach/combobox";
 
 import "@reach/combobox/styles.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 
 const PlacesAutocomplete = (props) => {
 
@@ -52,7 +55,9 @@ const PlacesAutocomplete = (props) => {
                 <ComboboxList>
                     {status === "OK" &&
                         data.map(({ place_id, description }) => (
-                            <ComboboxOption key={place_id} value={description} />
+                            <ComboboxOption key={place_id} value={description} style={{overflow: "hidden", height:"15px", paddingTop: "5px", paddingBottom: "5px", borderBottom: "1px solid #CDCDCD",}}>
+                                <FontAwesomeIcon icon={faMapMarkerAlt} style={{color: "#CDCDCD", paddingRight: "5px"}}/>  <ComboboxOptionText />
+                            </ComboboxOption>
                         ))}
                 </ComboboxList>
             </ComboboxPopover>

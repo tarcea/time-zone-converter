@@ -6,7 +6,6 @@ import "react-datepicker/dist/react-datepicker.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 import * as moment from 'moment';
-import AutocompleteInput from '../../components/AutocompleteInput/AutocompleteInput'
 import PlacesAutocomplete from '../AutoCompleteCombobox/AutoCompleteCombobx'
 
 export default function TimeZoneConverterCard() {
