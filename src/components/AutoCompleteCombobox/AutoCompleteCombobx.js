@@ -31,6 +31,13 @@ const PlacesAutocomplete = (props) => {
         setValue(val, false);
     };
 
+    const handleClick = (e) => {
+        if (e.target.value !== "") {
+            e.target.value = "";
+        }
+    }
+
+
     const placeholderStyle = {
         width: "94%", 
         height: "40px", 
@@ -50,7 +57,10 @@ const PlacesAutocomplete = (props) => {
                 onChange={handleInput}
                 disabled={!ready}
                 placeholder={placeholder}
-                style={placeholderStyle} />
+                style={placeholderStyle} 
+                onClick={handleClick}    
+                />
+                
             <ComboboxPopover>
                 <ComboboxList>
                     {status === "OK" &&
