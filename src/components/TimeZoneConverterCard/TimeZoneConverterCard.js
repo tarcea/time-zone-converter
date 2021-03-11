@@ -20,7 +20,7 @@ export default function TimeZoneConverterCard() {
     });
     const [twentyFourHour, setTwentyFourHour] = useState({
         backgroundColor: "white",
-        color: "black",
+        color: "#cc4747",
         active: false,
     })
 
@@ -37,17 +37,36 @@ export default function TimeZoneConverterCard() {
         setStartDate2(data);
     }
 
-    const changeColor = () => {
-        console.log(twelveHour.backgroundColor);
-        if (twelveHour.backgroundColor === "white") {
-            setTwelveHour({
-                backgroundColor: "#cc4747",
-                color: "white",
-            })
-        } else {
-            setTwelveHour({
-                backgroundColor: "white",
-            })
+    const changeColor = (timeFormat) => {
+        if (timeFormat === 12) {
+            console.log(twelveHour.backgroundColor)
+            console.log(twentyFourHour.backgroundColor.typeof)
+            if (twelveHour.color === "#cc4747"){
+                setTwelveHour({
+                    backgroundColor: "#cc4747",
+                    color: "white",
+                    active: true,
+                })
+                setTwentyFourHour({
+                    backgroundColor: "white",
+                    color: "#cc4747",
+                    active: false,
+                })
+            }
+        } else if( timeFormat === 24 ){
+            if( twentyFourHour.color === "#cc4747"){
+                setTwentyFourHour({
+                    backgroundColor: "#cc4747",
+                    color: "white",
+                    active: true,
+                })
+                setTwelveHour({
+                    backgroundColor: "white",
+                    color: "#cc4747",
+                    active: false,
+                })
+
+            }
         }
     }
 
@@ -64,7 +83,7 @@ export default function TimeZoneConverterCard() {
                 <div className={styles.CurrentTimeZone}>
                     <div className="formGroup">
                         <form className={styles.UserLocation}>
-                            <PlacesAutocomplete placeholder={"Your location ..."} />
+                            <PlacesAutocomplete placeholder={"Your location ..."} defaultValue={"Stockholm"}/>
                         </form>
                         <div className={styles.DateWeekTimeDiv}>
                             <div className={styles.leftInput}>
@@ -88,7 +107,7 @@ export default function TimeZoneConverterCard() {
                 <div className={styles.CurrentTimeZone}>
                     <div className="formGroup">
                         <form className={styles.UserLocation}>
-                            <PlacesAutocomplete placeholder={"Remote location..."} />
+                            <PlacesAutocomplete placeholder={"Remote location..."} defaultValue={"Stockholm, Sweden, Globuzzer"} />
                         </form>
                         <div className={styles.DateWeekTimeDiv}>
                             <div className={styles.leftInput}>
@@ -110,8 +129,8 @@ export default function TimeZoneConverterCard() {
             <div className={styles.CardFooter}>
                 <FontAwesomeIcon icon={faCalendarAlt} className={styles.CalendarIcon} />
                 <div className={styles.timeButtonsDiv}>
-                    <button style={twelveHour} onClick={changeColor} active={twelveHour.active}>12</button>
-                    <button>24</button>
+                    <button style={twelveHour} className={styles.TimeButton} onClick={(()=> {changeColor(12)})} active={twelveHour.active}>12</button>
+                    <button style={twentyFourHour} className={styles.TimeButton} onClick={(()=> {changeColor(24)})}>24</button>
                 </div>
 
 
