@@ -92,3 +92,8 @@
     margin-right: 15px;
     cursor: pointer;
 }
+
+.timeButtonsDiv {
+    display: flex;
+    margin-right: 2rem;
+}
