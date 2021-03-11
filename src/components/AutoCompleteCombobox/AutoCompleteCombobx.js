@@ -14,14 +14,15 @@ import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 
 const PlacesAutocomplete = (props) => {
 
-    const { placeholder } = props;
+    const { placeholder, defaultValue } = props;
 
     const {
         ready,
         value,
         suggestions: { status, data },
         setValue,
-    } = usePlacesAutocomplete();
+    } = usePlacesAutocomplete({defaultValue: defaultValue});
+    
 
     const handleInput = (e) => {
         setValue(e.target.value);
