@@ -2,17 +2,18 @@ import React, { useState } from 'react'
 import styles from './TimeZoneConverterCard.module.css';
 import Clock from "../Clock/Clock";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
-import * as moment from 'moment';
-import PlacesAutocomplete from '../AutoCompleteCombobox/AutoCompleteCombobx'
+import "react-datepicker/dist/react-datepicker.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import PlacesAutocomplete from '../AutoCompleteCombobox/AutoCompleteCombobx';
+import moment from 'moment-timezone';
 
 export default function TimeZoneConverterCard() {
     const [startDate, setStartDate] = useState(new Date());
     const [startDate2, setStartDate2] = useState(new Date());
     const [week, setWeek] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
     const [week2, setWeek2] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
+    const currentLocation = moment.tz.guess().split('/')[1];
     const [twelveHour, setTwelveHour] = useState({
         backgroundColor: "#cc4747",
         color: "white",
@@ -85,7 +86,7 @@ export default function TimeZoneConverterCard() {
                 <div className={styles.CurrentTimeZone}>
                     <div className="formGroup">
                         <form className={styles.UserLocation}>
-                            <PlacesAutocomplete placeholder={"Your location ..."} defaultValue={"Stockholm"}/>
+                            <PlacesAutocomplete placeholder={"Your location ..."} defaultValue={currentLocation}/>
                         </form>
                         <div className={styles.DateWeekTimeDiv}>
                             <div className={styles.leftInput}>
