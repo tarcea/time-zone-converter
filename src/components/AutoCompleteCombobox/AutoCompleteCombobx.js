@@ -68,7 +68,7 @@ const PlacesAutocomplete = (props) => {
                         data.map(({ place_id, description }) => (
                             <ComboboxOption key={place_id} value={description} style={{overflow: "hidden", height:"15px", paddingTop: "5px", paddingBottom: "5px", borderBottom: "1px solid #CDCDCD",}}>
                                 <FontAwesomeIcon icon={faMapMarkerAlt} style={{color: "#CDCDCD", paddingRight: "5px"}}/>  <ComboboxOptionText />
-                            </ComboboxOption>
+                            </ComboboxOption>                          
                         ))}
                 </ComboboxList>
             </ComboboxPopover>
@@ -76,4 +76,4 @@ const PlacesAutocomplete = (props) => {
     );
 };
 
-export default PlacesAutocomplete
+export default PlacesAutocomplete;

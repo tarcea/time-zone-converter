@@ -102,6 +102,7 @@ export default function TimeZoneConverterCard() {
                             </div>
                             <div className="rightInput">
                                 {new Date().toLocaleTimeString()}
+
                             </div>
                         </div>
                     </div>
@@ -145,10 +146,7 @@ export default function TimeZoneConverterCard() {
                     <button style={twentyFourHour} className={styles.TimeButton} onClick={(()=> {changeColor(24)})}>24</button>
                 </div>
 
-
             </div>
         </div>
     )
 }
-
-// className={styles.DatePicker}
