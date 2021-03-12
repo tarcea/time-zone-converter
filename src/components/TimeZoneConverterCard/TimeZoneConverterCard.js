@@ -70,6 +70,8 @@ export default function TimeZoneConverterCard() {
         }
     }
 
+
+
     return (
         <div className={styles.CardBackground}>
             <div className={styles.CardHeader}>
@@ -87,13 +89,20 @@ export default function TimeZoneConverterCard() {
                         </form>
                         <div className={styles.DateWeekTimeDiv}>
                             <div className={styles.leftInput}>
-                                <DatePicker className={styles.DatePicker} selected={startDate} onChange={date => getData(date)} />
+                                <DatePicker  selected={startDate} onChange={date => getData(date)}
+                                    dateFormat="yyyy-MM-dd"
+                                    showWeekNumbers
+                                    className={styles.DatePicker}
+                                    placeholderText="yyyy-mm-dd"
+                                     />
+                                
                             </div>
                             <div className="middleInput">
                                 <input type="text" readOnly placeholder={week} />
                             </div>
                             <div className="rightInput">
                                 {new Date().toLocaleTimeString()}
+
                             </div>
                         </div>
                     </div>
@@ -111,7 +120,11 @@ export default function TimeZoneConverterCard() {
                         </form>
                         <div className={styles.DateWeekTimeDiv}>
                             <div className={styles.leftInput}>
-                                <DatePicker className={styles.DatePicker} selected={startDate2} onChange={date => getData2(date)} />
+                                <DatePicker className={styles.DatePicker} selected={startDate2} onChange={date => getData2(date)} 
+                                    dateFormat="yyyy-MM-dd"
+                                    showWeekNumbers
+                                    placeholderText="yyyy-mm-dd"
+                                />
                             </div>
                             <div className="middleInput">
                                 <input type="text" readOnly placeholder={week2} />
@@ -132,7 +145,6 @@ export default function TimeZoneConverterCard() {
                     <button style={twelveHour} className={styles.TimeButton} onClick={(()=> {changeColor(12)})} active={twelveHour.active}>12</button>
                     <button style={twentyFourHour} className={styles.TimeButton} onClick={(()=> {changeColor(24)})}>24</button>
                 </div>
-
 
             </div>
         </div>
