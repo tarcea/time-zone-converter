@@ -75,6 +75,18 @@
     outline: none;
 }
 
+.react-time-picker__wrapper {
+    border: none !important;
+}
+
+.react-time-picker__inputGroup > input {
+    color: white !important;
+}
+
+button > svg {
+    filter: invert(1);
+}
+
 /* .form > div {
     display: flex;
     flex-wrap: wrap;

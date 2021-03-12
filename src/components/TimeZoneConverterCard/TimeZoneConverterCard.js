@@ -7,13 +7,16 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import PlacesAutocomplete from '../AutoCompleteCombobox/AutoCompleteCombobx';
 import moment from 'moment-timezone';
+import TimePicker from 'react-time-picker';
 
 export default function TimeZoneConverterCard() {
     const [startDate, setStartDate] = useState(new Date());
-    const [startDate2, setStartDate2] = useState(new Date());
+    // const [startDate2, setStartDate2] = useState(new Date());
     const [week, setWeek] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
-    const [week2, setWeek2] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
+    // const [week2, setWeek2] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
     const currentLocation = moment.tz.guess().split('/')[1];
+    const [homeTime, setHomeTime] = useState(new Date().toLocaleTimeString());
+    const [meetTime, setMeetTime] = useState(new Date().toLocaleTimeString());
     const [twelveHour, setTwelveHour] = useState({
         backgroundColor: "#cc4747",
         color: "white",
@@ -28,15 +31,16 @@ export default function TimeZoneConverterCard() {
 
     function getData(data) {
         const w = moment(data).format("W");
-        setWeek(`w. ${parseInt(w) + 1}`);
+        setWeek(`w. ${parseInt(w)}`);
         setStartDate(data);
     }
 
-    function getData2(data) {
-        const w = moment(data).format("W");
-        setWeek2(`w. ${parseInt(w) + 1}`);
-        setStartDate2(data);
-    }
+    // use if calendars need to work separately 
+    // function getData2(data) {
+    //     const w = moment(data).format("W");
+    //     setWeek2(`w. ${parseInt(w) + 1}`);
+    //     setStartDate2(data);
+    // }
 
     const changeColor = (timeFormat) => {
         if (timeFormat === 12) {
@@ -102,8 +106,10 @@ export default function TimeZoneConverterCard() {
                                 <input type="text" readOnly placeholder={week} />
                             </div>
                             <div className="rightInput">
-                                {new Date().toLocaleTimeString()}
-
+                            <TimePicker
+                                onChange={setHomeTime}
+                                value={homeTime}
+                            />
                             </div>
                         </div>
                     </div>
@@ -121,17 +127,20 @@ export default function TimeZoneConverterCard() {
                         </form>
                         <div className={styles.DateWeekTimeDiv}>
                             <div className={styles.leftInput}>
-                                <DatePicker className={styles.DatePicker} selected={startDate2} onChange={date => getData2(date)} 
+                                <DatePicker className={styles.DatePicker} selected={startDate} onChange={date => getData(date)} 
                                     dateFormat="yyyy-MM-dd"
                                     showWeekNumbers
                                     placeholderText="yyyy-mm-dd"
                                 />
                             </div>
                             <div className="middleInput">
-                                <input type="text" readOnly placeholder={week2} />
+                                <input type="text" readOnly placeholder={week} />
                             </div>
                             <div className="rightInput">
-                                {new Date().toLocaleTimeString()}
+                            <TimePicker
+                                onChange={setMeetTime}
+                                value={meetTime}
+                            />
                             </div>
                         </div>
                     </div>
