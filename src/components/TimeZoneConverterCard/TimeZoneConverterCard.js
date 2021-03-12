@@ -87,7 +87,12 @@ export default function TimeZoneConverterCard() {
                         </form>
                         <div className={styles.DateWeekTimeDiv}>
                             <div className={styles.leftInput}>
-                                <DatePicker className={styles.DatePicker} selected={startDate} onChange={date => getData(date)} />
+                                <DatePicker  selected={startDate} onChange={date => getData(date)}
+                                    dateFormat="yyyy-MM-dd"
+                                    showWeekNumbers
+                                    className={styles.DatePicker}
+                                     />
+                                
                             </div>
                             <div className="middleInput">
                                 <input type="text" readOnly placeholder={week} />
@@ -111,7 +116,10 @@ export default function TimeZoneConverterCard() {
                         </form>
                         <div className={styles.DateWeekTimeDiv}>
                             <div className={styles.leftInput}>
-                                <DatePicker className={styles.DatePicker} selected={startDate2} onChange={date => getData2(date)} />
+                                <DatePicker className={styles.DatePicker} selected={startDate2} onChange={date => getData2(date)} 
+                                    dateFormat="yyyy-MM-dd"
+                                    showWeekNumbers
+                                />
                             </div>
                             <div className="middleInput">
                                 <input type="text" readOnly placeholder={week2} />
@@ -138,3 +146,5 @@ export default function TimeZoneConverterCard() {
         </div>
     )
 }
+
+// className={styles.DatePicker}
