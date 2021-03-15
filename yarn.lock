@@ -7331,6 +7331,11 @@
   dependencies:
     "yallist" "^4.0.0"
 
+"luxon@^1.26.0":
+  "integrity" "sha512-+V5QIQ5f6CDXQpWNICELwjwuHdqeJM1UenlZWx5ujcRMc9venvluCjFb4t5NYLhb6IhkbMVOxzVuOqkgMxee2A=="
+  "resolved" "https://registry.npmjs.org/luxon/-/luxon-1.26.0.tgz"
+  "version" "1.26.0"
+
 "lz-string@^1.4.4":
   "integrity" "sha1-wNjq82BZ9wV5bh40SBHPTEmNOiY="
   "resolved" "https://registry.npmjs.org/lz-string/-/lz-string-1.4.4.tgz"
