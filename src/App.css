@@ -87,6 +87,22 @@ button > svg {
     filter: invert(1);
 }
 
+reach-portal > div {
+    max-height: 200px;
+    width: 100px;
+    overflow-y: scroll;
+}
+
+reach-portal > div::-webkit-scrollbar {
+    display: none;
+}
+
+li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* .form > div {
     display: flex;
     flex-wrap: wrap;
