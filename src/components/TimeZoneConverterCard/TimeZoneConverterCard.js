@@ -2,12 +2,15 @@ import React, { useState } from 'react'
 import styles from './TimeZoneConverterCard.module.css';
 import Clock from "../Clock/Clock";
 import DatePicker from "react-datepicker";
+import {Combobox, ComboboxOption } from "@reach/combobox"
 import "react-datepicker/dist/react-datepicker.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 import * as moment from 'moment';
 import PlacesAutocomplete from '../AutoCompleteCombobox/AutoCompleteCombobx'
 import { DateTime } from "luxon";
+import TimePicker from "../TimePicker/TimePicker"
+
 
 const zone = "America/Los_Angeles"
 const dt = DateTime.now()
@@ -40,15 +43,11 @@ export default function TimeZoneConverterCard() {
        const dropDownOptions = hoursArray.map((nextHour, index)=> {
              const nextTime = (DateTime.fromObject({zone: "Europe/Stockholm"}).plus({hours: nextHour }).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE))
              return (
-                 <option value={nextTime} key={index}>
-                    {nextTime}
-                 </option>
+                <ComboboxOption value={nextTime} />
              )
         })
         return dropDownOptions
     }
-
-    console.log(timeDropDown(), "hiiiii")
 
     function getData(data) {
         const w = moment(data).format("W");
@@ -95,8 +94,6 @@ export default function TimeZoneConverterCard() {
         }
     }
 
-
-
     return (
         <div className={styles.CardBackground}>
             <div className={styles.CardHeader}>
@@ -126,7 +123,7 @@ export default function TimeZoneConverterCard() {
                                 <input type="text" readOnly placeholder={week} />
                             </div>
                             <div className="rightInput">
-                                {new Date().toLocaleTimeString()}
+                            <TimePicker dropDownTimes={timeDropDown()} defaultValue={DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)} />
 
                             </div>
                         </div>
@@ -155,18 +152,8 @@ export default function TimeZoneConverterCard() {
                                 <input type="text" readOnly placeholder={week2} />
                             </div>
                             <div className="rightInput">
-                                {/* {new Date().toLocaleTimeString()} */}
-                                <form>
-                                    <select
-                                        id="date"
-                                        type="date"
-                                        name="date"
-                                    >
-                                        <option defaultValue="default">{DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)}</option>
-                                        {timeDropDown()}
-                                    </select>
-                                    
-                                </form>
+                                {console.log(timeDropDown(), "bbbbbb")}
+                                <TimePicker dropDownTimes={timeDropDown()} defaultValue={DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)} />
                             </div>
                         </div>
                     </div>
