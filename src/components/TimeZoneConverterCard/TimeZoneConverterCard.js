@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from './TimeZoneConverterCard.module.css';
 import Clock from "../Clock/Clock";
 import DatePicker from "react-datepicker";
-import {Combobox, ComboboxOption } from "@reach/combobox"
+import { ComboboxOption } from "@reach/combobox"
 import "react-datepicker/dist/react-datepicker.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
@@ -10,14 +10,6 @@ import * as moment from 'moment';
 import PlacesAutocomplete from '../AutoCompleteCombobox/AutoCompleteCombobx'
 import { DateTime } from "luxon";
 import TimePicker from "../TimePicker/TimePicker"
-
-
-const zone = "America/Los_Angeles"
-const dt = DateTime.now()
-console.log(dt.toLocaleString({hour: "numeric", minute: "numeric"}))
-console.log(DateTime.TIME_SIMPLE)
-console.log(dt.setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE))
-console.log(DateTime.fromObject({zone: "Europe/Stockholm"}).plus({hours: 1 }).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE));
 
 export default function TimeZoneConverterCard() {
     const [startDate, setStartDate] = useState(new Date());
@@ -34,7 +26,7 @@ export default function TimeZoneConverterCard() {
         color: "#cc4747",
         active: false,
     })
-    const [timeZone, setTimeZone] = useState('Europe/Stockholm')
+    // const [timeZone, setTimeZone] = useState('Europe/Stockholm')
 
 
    const hoursArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]

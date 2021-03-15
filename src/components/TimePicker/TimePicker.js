@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-    Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption, ComboboxOptionText
+    Combobox, ComboboxInput, ComboboxPopover, ComboboxList
 } from "@reach/combobox"
 
 

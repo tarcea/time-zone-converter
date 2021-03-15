@@ -118,3 +118,14 @@
     background-color: rgba(204, 71, 71, 0.9);
     color: blue
 }
+
+@media only screen and (max-width: 600px) {
+    .CardBackground {
+        width: 280px;
+        
+    }
+
+    
+
+    
+  }
