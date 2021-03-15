@@ -113,3 +113,8 @@
 .leftInput {
     width: 30%;
 }
+
+.TimeInput {
+    background-color: rgba(204, 71, 71, 0.9);
+    color: blue
+}

@@ -21,12 +21,9 @@ console.log(DateTime.fromObject({zone: "Europe/Stockholm"}).plus({hours: 1 }).se
 
 export default function TimeZoneConverterCard() {
     const [startDate, setStartDate] = useState(new Date());
-    // const [startDate2, setStartDate2] = useState(new Date());
+    const [startDate2, setStartDate2] = useState(new Date());
     const [week, setWeek] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
-    // const [week2, setWeek2] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
-    // const currentLocation = moment.tz.guess().split('/')[1];
-    // const [homeTime, setHomeTime] = useState(new Date().toLocaleTimeString());
-    // const [meetTime, setMeetTime] = useState(new Date().toLocaleTimeString());
+    const [week2, setWeek2] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
     const [twelveHour, setTwelveHour] = useState({
         backgroundColor: "#cc4747",
         color: "white",
@@ -54,16 +51,15 @@ export default function TimeZoneConverterCard() {
 
     function getData(data) {
         const w = moment(data).format("W");
-        setWeek(`w. ${parseInt(w)}`);
+        setWeek(`w. ${parseInt(w) + 1}`);
         setStartDate(data);
     }
 
-    // use if calendars need to work separately 
-    // function getData2(data) {
-    //     const w = moment(data).format("W");
-    //     setWeek2(`w. ${parseInt(w) + 1}`);
-    //     setStartDate2(data);
-    // }
+    function getData2(data) {
+        const w = moment(data).format("W");
+        setWeek2(`w. ${parseInt(w) + 1}`);
+        setStartDate2(data);
+    }
 
     const changeColor = (timeFormat) => {
         if (timeFormat === 12) {
@@ -111,7 +107,7 @@ export default function TimeZoneConverterCard() {
                 <div className={styles.CurrentTimeZone}>
                     <div className="formGroup">
                         <form className={styles.UserLocation}>
-                            <PlacesAutocomplete placeholder={"Your location ..."} defaultValue={currentLocation}/>
+                            <PlacesAutocomplete placeholder={"Your location ..."} defaultValue={"Stockholm"}/>
                         </form>
                         <div className={styles.DateWeekTimeDiv}>
                             <div className={styles.leftInput}>
@@ -146,16 +142,17 @@ export default function TimeZoneConverterCard() {
                         </form>
                         <div className={styles.DateWeekTimeDiv}>
                             <div className={styles.leftInput}>
-                                <DatePicker className={styles.DatePicker} selected={startDate} onChange={date => getData(date)} 
+                                <DatePicker className={styles.DatePicker} selected={startDate2} onChange={date => getData2(date)} 
                                     dateFormat="yyyy-MM-dd"
                                     showWeekNumbers
                                     placeholderText="yyyy-mm-dd"
                                 />
                             </div>
                             <div className="middleInput">
-                                <input type="text" readOnly placeholder={week} />
+                                <input type="text" readOnly placeholder={week2} className={styles.TimeInput}/>
                             </div>
                             <div className="rightInput">
+                                {console.log(timeDropDown(), "bbbbbb")}
                                 <TimePicker dropDownTimes={timeDropDown()} defaultValue={DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)} />
                             </div>
                         </div>
