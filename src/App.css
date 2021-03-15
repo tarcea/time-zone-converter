@@ -64,10 +64,27 @@
     border: none;
     font-size: 17px;
     font-weight: 700;
+    width: 100%;
 }
 
 .middleInput > input::placeholder {
     color: white;
+}
+
+*:focus {
+    outline: none;
+}
+
+.react-time-picker__wrapper {
+    border: none !important;
+}
+
+.react-time-picker__inputGroup > input {
+    color: white !important;
+}
+
+button > svg {
+    filter: invert(1);
 }
 
 /* .form > div {
