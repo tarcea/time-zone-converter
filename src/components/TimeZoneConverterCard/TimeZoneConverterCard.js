@@ -26,20 +26,6 @@ export default function TimeZoneConverterCard() {
         color: "#cc4747",
         active: false,
     })
-    // const [timeZone, setTimeZone] = useState('Europe/Stockholm')
-
-
-   const hoursArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
-
-    const timeDropDown = () => { 
-       const dropDownOptions = hoursArray.map((nextHour, index)=> {
-             const nextTime = (DateTime.fromObject({zone: "Europe/Stockholm"}).plus({hours: nextHour }).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE))
-             return (
-                <ComboboxOption value={nextTime} key={index} />
-             )
-        })
-        return dropDownOptions
-    }
 
     function getData(data) {
         const w = moment(data).format("W");
@@ -115,7 +101,7 @@ export default function TimeZoneConverterCard() {
                                 <input type="text" readOnly placeholder={week} />
                             </div>
                             <div className="rightInput">
-                            <TimePicker dropDownTimes={timeDropDown()} defaultValue={DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)} />
+                            <TimePicker defaultValue={DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)} />
 
                             </div>
                         </div>
@@ -144,8 +130,7 @@ export default function TimeZoneConverterCard() {
                                 <input type="text" readOnly placeholder={week2} className={styles.TimeInput}/>
                             </div>
                             <div className="rightInput">
-                                {console.log(timeDropDown(), "bbbbbb")}
-                                <TimePicker dropDownTimes={timeDropDown()} defaultValue={DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)} />
+                                <TimePicker defaultValue={DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)} />
                             </div>
                         </div>
                     </div>
