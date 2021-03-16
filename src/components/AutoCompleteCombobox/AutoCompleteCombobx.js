@@ -23,6 +23,7 @@ const PlacesAutocomplete = (props) => {
         setValue,
     } = usePlacesAutocomplete({defaultValue: defaultValue});
     
+    console.log(value, data)
 
     const handleInput = (e) => {
         setValue(e.target.value);
