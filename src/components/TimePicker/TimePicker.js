@@ -7,6 +7,7 @@ import {
 export default function TimePicker(props) {
     const {dropDownTimes, defaultValue} = props
     const [value, setValue] = useState(defaultValue)
+    const [dropDown, setDropdown] = useState(0) 
 
 
     const handleDropdownClick = (e) => {
@@ -15,6 +16,11 @@ export default function TimePicker(props) {
     }
 
     const handleClick = (e) => {
+        if(dropDown === 0){
+            setValue(e.target.value)
+            setDropdown(1)
+        }
+        if(dropDown === 1)
         setValue("")
     }
 
