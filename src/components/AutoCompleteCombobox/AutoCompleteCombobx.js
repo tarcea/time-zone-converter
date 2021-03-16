@@ -39,6 +39,8 @@ const PlacesAutocomplete = (props) => {
     }
 
 
+
+
     const placeholderStyle = {
         width: "94%", 
         height: "40px", 
@@ -62,8 +64,8 @@ const PlacesAutocomplete = (props) => {
                 onClick={handleClick}    
                 />
                 
-            <ComboboxPopover>
-                <ComboboxList>
+            <ComboboxPopover >
+                <ComboboxList >
                     {status === "OK" &&
                         data.map(({ place_id, description }) => (
                             <ComboboxOption key={place_id} value={description} style={{overflow: "hidden", height:"15px", paddingTop: "5px", paddingBottom: "5px", borderBottom: "1px solid #CDCDCD",}}>

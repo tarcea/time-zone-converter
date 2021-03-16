@@ -35,7 +35,7 @@ export default function TimeZoneConverterCard() {
        const dropDownOptions = hoursArray.map((nextHour, index)=> {
              const nextTime = (DateTime.fromObject({zone: "Europe/Stockholm"}).plus({hours: nextHour }).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE))
              return (
-                <ComboboxOption value={nextTime} />
+                <ComboboxOption value={nextTime} key={index} />
              )
         })
         return dropDownOptions
