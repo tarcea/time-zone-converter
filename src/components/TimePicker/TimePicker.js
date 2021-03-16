@@ -6,10 +6,9 @@ import { DateTime } from "luxon";
 
 
 export default function TimePicker(props) {
-    const {dropDownTimes, defaultValue} = props
+    const {defaultValue} = props
     const [value, setValue] = useState(defaultValue)
     const [dropDown, setDropdown] = useState(0) 
-    const [times, setTimes] = useState(DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE))
 
 
     const handleDropdownClick = (e) => {
