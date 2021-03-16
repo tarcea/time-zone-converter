@@ -10,12 +10,17 @@ import * as moment from 'moment';
 import PlacesAutocomplete from '../AutoCompleteCombobox/AutoCompleteCombobx'
 import { DateTime } from "luxon";
 import TimePicker from "../TimePicker/TimePicker"
+// import usePlacesAutocomplete, {
+//     getGeocode,
+//     getLatLng,
+//   } from "use-places-autocomplete";
 
 export default function TimeZoneConverterCard() {
     const [startDate, setStartDate] = useState(new Date());
     const [startDate2, setStartDate2] = useState(new Date());
     const [week, setWeek] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
     const [week2, setWeek2] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
+    const [city, setCity] = useState();
     const [twelveHour, setTwelveHour] = useState({
         backgroundColor: "#cc4747",
         color: "white",
@@ -28,7 +33,10 @@ export default function TimeZoneConverterCard() {
     })
     // const [timeZone, setTimeZone] = useState('Europe/Stockholm')
 
-
+    function test () {
+        setCity()
+        console.log(city)
+    }
    const hoursArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
 
     const timeDropDown = () => { 
@@ -55,7 +63,7 @@ export default function TimeZoneConverterCard() {
 
     const changeColor = (timeFormat) => {
         if (timeFormat === 12) {
-            console.log(twelveHour.backgroundColor)
+            console.log(twelveHour.backgrounPlacesAutocompletedColor)
             console.log(twentyFourHour.backgroundColor.typeof)
             if (twelveHour.color === "#cc4747"){
                 setTwelveHour({
@@ -99,7 +107,7 @@ export default function TimeZoneConverterCard() {
                 <div className={styles.CurrentTimeZone}>
                     <div className="formGroup">
                         <form className={styles.UserLocation}>
-                            <PlacesAutocomplete placeholder={"Your location ..."} defaultValue={"Stockholm"}/>
+                            <PlacesAutocomplete placeholder={"Your location ..."} defaultValue={"Stockholm"} />
                         </form>
                         <div className={styles.DateWeekTimeDiv}>
                             <div className={styles.leftInput}>

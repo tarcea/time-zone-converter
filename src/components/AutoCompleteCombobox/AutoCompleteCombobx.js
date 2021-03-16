@@ -7,15 +7,32 @@ import {
     ComboboxOption,
     ComboboxOptionText,
 } from "@reach/combobox";
-
+// import moment from 'moment-timezone';
+import { DateTime } from 'luxon';
 import "@reach/combobox/styles.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
+import cityTimezones from 'city-timezones';
 
 const PlacesAutocomplete = (props) => {
-
+    
     const { placeholder, defaultValue } = props;
-
+    
+    function getTimeZone (city) {
+        const cityLookup = cityTimezones.lookupViaCity(city)[0].timezone; 
+        console.log(cityLookup)
+        offsetDate(DateTime.now().setZone(cityLookup).offset)
+    }
+    function offsetDate(offset){
+        var d = new Date(new Date().getTime() + (offset * 1000));
+        var hrs = d.getUTCHours();
+        var mins = d.getUTCMinutes();
+        var secs = d.getUTCSeconds();
+        //simple output
+        console.log(hrs + ":" + mins + ":" + secs);
+    }
+    getTimeZone('Skopje')
+    // console.log(DateTime.now().setZone("America/Los_Angeles"))
     const {
         ready,
         value,
@@ -26,16 +43,19 @@ const PlacesAutocomplete = (props) => {
 
     const handleInput = (e) => {
         setValue(e.target.value);
+        // console.log(e.target.value)
     };
 
     const handleSelect = (val) => {
         setValue(val, false);
-    };
+        
 
+    };
+    
     const handleClick = (e) => {
         if (e.target.value !== "") {
             e.target.value = "";
-        }
+            }
     }
 
 
@@ -57,7 +77,7 @@ const PlacesAutocomplete = (props) => {
                 value={value}
                 onChange={handleInput}
                 disabled={!ready}
-                placeholder={placeholder}
+                placeholder={placeholder}x  
                 style={placeholderStyle} 
                 onClick={handleClick}    
                 />

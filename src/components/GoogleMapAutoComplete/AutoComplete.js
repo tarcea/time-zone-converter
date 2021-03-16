@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import PlacesAutocomplete from 'react-places-autocomplete';
+import PlacesAutocomplete, {getGeocode, getLatLng} from 'react-places-autocomplete';
 
 function AutoComplete() {
     const [address, setAddress] = useState("")
@@ -11,6 +11,7 @@ function AutoComplete() {
     const handleSelect = (value) => {
         setAddress(value)
     }
+    
 
         return <div>
             <PlacesAutocomplete value={address} onchange={handleChange} onSelect={handleSelect}>
