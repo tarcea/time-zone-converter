@@ -7,7 +7,6 @@ import {
     ComboboxOption,
     ComboboxOptionText,
 } from "@reach/combobox";
-// import moment from 'moment-timezone';
 import { DateTime } from 'luxon';
 import "@reach/combobox/styles.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -27,11 +26,9 @@ const PlacesAutocomplete = (props) => {
         var hrs = d.getUTCHours();
         var mins = d.getUTCMinutes();
         var secs = d.getUTCSeconds();
-        //simple output
-        console.log(hrs + ":" + mins + ":" + secs);
     }
     getTimeZone('Skopje')
-    // console.log(DateTime.now().setZone("America/Los_Angeles"))
+
     const {
         ready,
         value,
