@@ -22,10 +22,8 @@ const PlacesAutocomplete = (props) => {
         offsetDate(DateTime.now().setZone(cityLookup).offset)
     }
     function offsetDate(offset){
-        var d = new Date(new Date().getTime() + (offset * 1000));
-        var hrs = d.getUTCHours();
-        var mins = d.getUTCMinutes();
-        var secs = d.getUTCSeconds();
+        var d = new Date(new Date().getTime() + (offset * 1000)).toString();
+        console.log(d.split(" ")[4])
     }
     getTimeZone('Skopje')
 
