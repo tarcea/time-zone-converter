@@ -95,9 +95,3 @@ reach-portal > div {
 reach-portal > div::-webkit-scrollbar {
     display: none;
 }
-
-li {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
