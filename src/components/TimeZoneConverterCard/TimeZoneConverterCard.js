@@ -9,37 +9,14 @@ import * as moment from 'moment';
 import PlacesAutocomplete from '../AutoCompleteCombobox/AutoCompleteCombobx'
 import { DateTime } from "luxon";
 import TimeFormat from '../TimeFormat/TimeFormat'
-// import usePlacesAutocomplete, {
-//     getGeocode,
-//     getLatLng,
-//   } from "use-places-autocomplete";
 
 export default function TimeZoneConverterCard() {
     const [startDate, setStartDate] = useState(new Date());
-    const [locationTime, setLocationTime] = useState(DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE))
+    const [localTime, setlocalTime] = useState(DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE))
     const [destinationTime, setDestinationTime] = useState(DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE))
     const [startDate2, setStartDate2] = useState(new Date());
     const [week, setWeek] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
     const [week2, setWeek2] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
-    const [city, setCity] = useState();
-    
-    // const [timeZone, setTimeZone] = useState('Europe/Stockholm')
-
-    function test () {
-        setCity()
-        console.log(city)
-    }
-//    const hoursArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
-
-//     const timeDropDown = () => { 
-//        const dropDownOptions = hoursArray.map((nextHour, index)=> {
-//              const nextTime = (DateTime.fromObject({zone: "Europe/Stockholm"}).plus({hours: nextHour }).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE))
-//              return (
-//                 <ComboboxOption value={nextTime} />
-//              )
-//         })
-//         return dropDownOptions
-//     }
 
     function getData(data) {
         const w = moment(data).format("W");
@@ -55,17 +32,27 @@ export default function TimeZoneConverterCard() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setLocationTime(e.target.value)
+        setlocalTime(e.target.value)
     }
 
     const handleInput = (e) => {
-        setLocationTime(e.target.value)
+        setlocalTime(e.target.value)
         
     }
 
     const handleDoubleClick = (e) => {
         console.log("doubleClick")
-        setLocationTime("")
+        setlocalTime("")
+    }
+
+    const changeDefaultTime = (timeFormat) => {
+        if(timeFormat === 12){
+            setlocalTime((DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)))
+            setDestinationTime((DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)))
+        }else if(timeFormat === 24){
+            setlocalTime((DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_24_SIMPLE)))
+            setDestinationTime((DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_24_SIMPLE)))
+        }
     }
 
     return (
@@ -103,7 +90,7 @@ export default function TimeZoneConverterCard() {
                                 <input type="text" 
                                     defaultValue={DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)} 
                                     placeholder="MM:HH" 
-                                    value={locationTime} 
+                                    value={localTime} 
                                     onChange={handleInput}
                                     className={styles.TimeInput}
                                     onDoubleClick={handleDoubleClick}
@@ -161,7 +148,7 @@ export default function TimeZoneConverterCard() {
             <div className={styles.CardFooter}>
                 <FontAwesomeIcon icon={faCalendarAlt} className={styles.CalendarIcon} />
                 <div className={styles.timeButtonsDiv}>
-                    <TimeFormat />
+                    <TimeFormat onTimeChange={changeDefaultTime}/>
                 </div>
 
             </div>

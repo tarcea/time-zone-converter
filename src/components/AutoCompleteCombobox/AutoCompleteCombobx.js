@@ -20,7 +20,6 @@ const PlacesAutocomplete = (props) => {
     
     function getTimeZone (city) {
         const cityLookup = cityTimezones.lookupViaCity(city)[0].timezone; 
-        console.log(cityLookup)
         offsetDate(DateTime.now().setZone(cityLookup).offset)
     }
     function offsetDate(offset){

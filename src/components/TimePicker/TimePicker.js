@@ -5,8 +5,7 @@ import {
 
 
 export default function TimePicker(props) {
-
-    const {dropDownTimes, defaultValue} = props
+    const {dropDownTimes} = props
     const [homeTime, setHomeTime] = useState()
 
     return (
