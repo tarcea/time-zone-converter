@@ -2,14 +2,13 @@ import React, { useState } from 'react'
 import styles from './TimeZoneConverterCard.module.css';
 import Clock from "../Clock/Clock";
 import DatePicker from "react-datepicker";
-import { ComboboxOption } from "@reach/combobox"
 import "react-datepicker/dist/react-datepicker.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 import * as moment from 'moment';
 import PlacesAutocomplete from '../AutoCompleteCombobox/AutoCompleteCombobx'
 import { DateTime } from "luxon";
-import TimePicker from "../TimePicker/TimePicker"
+import TimeFormat from '../TimeFormat/TimeFormat'
 // import usePlacesAutocomplete, {
 //     getGeocode,
 //     getLatLng,
@@ -23,33 +22,24 @@ export default function TimeZoneConverterCard() {
     const [week, setWeek] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
     const [week2, setWeek2] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
     const [city, setCity] = useState();
-    const [twelveHour, setTwelveHour] = useState({
-        backgroundColor: "#cc4747",
-        color: "white",
-        active: true,
-    });
-    const [twentyFourHour, setTwentyFourHour] = useState({
-        backgroundColor: "white",
-        color: "#cc4747",
-        active: false,
-    })
+    
     // const [timeZone, setTimeZone] = useState('Europe/Stockholm')
 
     function test () {
         setCity()
         console.log(city)
     }
-   const hoursArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
+//    const hoursArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
 
-    const timeDropDown = () => { 
-       const dropDownOptions = hoursArray.map((nextHour, index)=> {
-             const nextTime = (DateTime.fromObject({zone: "Europe/Stockholm"}).plus({hours: nextHour }).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE))
-             return (
-                <ComboboxOption value={nextTime} />
-             )
-        })
-        return dropDownOptions
-    }
+//     const timeDropDown = () => { 
+//        const dropDownOptions = hoursArray.map((nextHour, index)=> {
+//              const nextTime = (DateTime.fromObject({zone: "Europe/Stockholm"}).plus({hours: nextHour }).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE))
+//              return (
+//                 <ComboboxOption value={nextTime} />
+//              )
+//         })
+//         return dropDownOptions
+//     }
 
     function getData(data) {
         const w = moment(data).format("W");
@@ -61,39 +51,6 @@ export default function TimeZoneConverterCard() {
         const w = moment(data).format("W");
         setWeek2(`w. ${parseInt(w) + 1}`);
         setStartDate2(data);
-    }
-
-    const changeColor = (timeFormat) => {
-        if (timeFormat === 12) {
-            console.log(twelveHour.backgrounPlacesAutocompletedColor)
-            console.log(twentyFourHour.backgroundColor.typeof)
-            if (twelveHour.color === "#cc4747"){
-                setTwelveHour({
-                    backgroundColor: "#cc4747",
-                    color: "white",
-                    active: true,
-                })
-                setTwentyFourHour({
-                    backgroundColor: "white",
-                    color: "#cc4747",
-                    active: false,
-                })
-            }
-        } else if( timeFormat === 24 ){
-            if( twentyFourHour.color === "#cc4747"){
-                setTwentyFourHour({
-                    backgroundColor: "#cc4747",
-                    color: "white",
-                    active: true,
-                })
-                setTwelveHour({
-                    backgroundColor: "white",
-                    color: "#cc4747",
-                    active: false,
-                })
-
-            }
-        }
     }
 
     const handleSubmit = (e) => {
@@ -204,8 +161,7 @@ export default function TimeZoneConverterCard() {
             <div className={styles.CardFooter}>
                 <FontAwesomeIcon icon={faCalendarAlt} className={styles.CalendarIcon} />
                 <div className={styles.timeButtonsDiv}>
-                    <button style={twelveHour} className={styles.TimeButton} onClick={(()=> {changeColor(12)})} active={twelveHour.active}>12</button>
-                    <button style={twentyFourHour} className={styles.TimeButton} onClick={(()=> {changeColor(24)})}>24</button>
+                    <TimeFormat />
                 </div>
 
             </div>
