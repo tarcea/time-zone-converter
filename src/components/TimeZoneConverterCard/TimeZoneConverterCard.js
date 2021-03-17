@@ -105,6 +105,11 @@ export default function TimeZoneConverterCard() {
         
     }
 
+    const handleDoubleClick = (e) => {
+        console.log("doubleClick")
+        setLocationTime("")
+    }
+
     return (
         <div className={styles.CardBackground}>
             <div className={styles.CardHeader}>
@@ -138,12 +143,12 @@ export default function TimeZoneConverterCard() {
 
                             <form onSubmit={handleSubmit}>
                                 <input type="text" 
-                                    defaultValue={timeDropDown()} 
                                     defaultValue={DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)} 
                                     placeholder="MM:HH" 
                                     value={locationTime} 
                                     onChange={handleInput}
                                     className={styles.TimeInput}
+                                    onDoubleClick={handleDoubleClick}
                                     >
                                 </input>
                             </form>
