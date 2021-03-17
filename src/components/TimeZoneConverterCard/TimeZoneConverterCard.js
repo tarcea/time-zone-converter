@@ -17,6 +17,7 @@ import TimePicker from "../TimePicker/TimePicker"
 
 export default function TimeZoneConverterCard() {
     const [startDate, setStartDate] = useState(new Date());
+    const [locationTime, setLocationTime] = useState(DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE))
     const [startDate2, setStartDate2] = useState(new Date());
     const [week, setWeek] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
     const [week2, setWeek2] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
@@ -94,6 +95,16 @@ export default function TimeZoneConverterCard() {
         }
     }
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setLocationTime(e.target.value)
+    }
+
+    const handleInput = (e) => {
+        setLocationTime(e.target.value)
+        
+    }
+
     return (
         <div className={styles.CardBackground}>
             <div className={styles.CardHeader}>
@@ -123,7 +134,19 @@ export default function TimeZoneConverterCard() {
                                 <input type="text" readOnly placeholder={week} />
                             </div>
                             <div className="rightInput">
-                            <TimePicker dropDownTimes={timeDropDown()} defaultValue={DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)} />
+
+
+                            <form onSubmit={handleSubmit}>
+                                <input type="text" 
+                                    defaultValue={timeDropDown()} 
+                                    defaultValue={DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)} 
+                                    placeholder="MM:HH" 
+                                    value={locationTime} 
+                                    onChange={handleInput}
+                                    className={styles.TimeInput}
+                                    >
+                                </input>
+                            </form>
 
                             </div>
                         </div>
@@ -152,8 +175,18 @@ export default function TimeZoneConverterCard() {
                                 <input type="text" readOnly placeholder={week2} className={styles.TimeInput}/>
                             </div>
                             <div className="rightInput">
-                                {console.log(timeDropDown(), "bbbbbb")}
-                                <TimePicker dropDownTimes={timeDropDown()} defaultValue={DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)} />
+                            <form onSubmit={handleSubmit}>
+                                <input type="text" 
+                                    defaultValue={timeDropDown()} 
+                                    defaultValue={DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)} 
+                                    placeholder="MM:HH" 
+                                    value={locationTime} 
+                                    onChange={handleInput}
+                                    className={styles.TimeInput}
+                                    >
+                                </input>
+                            </form>
+                                
                             </div>
                         </div>
                     </div>
