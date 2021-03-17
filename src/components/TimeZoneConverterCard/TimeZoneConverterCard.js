@@ -18,6 +18,7 @@ import TimePicker from "../TimePicker/TimePicker"
 export default function TimeZoneConverterCard() {
     const [startDate, setStartDate] = useState(new Date());
     const [locationTime, setLocationTime] = useState(DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE))
+    const [destinationTime, setDestinationTime] = useState(DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE))
     const [startDate2, setStartDate2] = useState(new Date());
     const [week, setWeek] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
     const [week2, setWeek2] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
@@ -180,12 +181,12 @@ export default function TimeZoneConverterCard() {
                                 <input type="text" readOnly placeholder={week2} className={styles.TimeInput}/>
                             </div>
                             <div className="rightInput">
+                            
                             <form onSubmit={handleSubmit}>
                                 <input type="text" 
-                                    defaultValue={timeDropDown()} 
                                     defaultValue={DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)} 
                                     placeholder="MM:HH" 
-                                    value={locationTime} 
+                                    value={destinationTime} 
                                     onChange={handleInput}
                                     className={styles.TimeInput}
                                     >
