@@ -56,7 +56,6 @@ export default function TimeZoneConverterCard() {
     }
 
     const handleDoubleClick = (e) => {
-        console.log("doubleClick")
         setlocalTime("")
     }
 
@@ -68,6 +67,11 @@ export default function TimeZoneConverterCard() {
             setlocalTime((DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_24_SIMPLE)))
             setDestinationTime((DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_24_SIMPLE)))
         }
+    }
+
+    const changeToLocalTime = (offset) => {
+        console.log("mmmmmmmmm")
+        setlocalTime((DateTime.utc().plus({minutes: offset}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)))
     }
 
     return (
@@ -126,7 +130,7 @@ export default function TimeZoneConverterCard() {
                 <div className={styles.CurrentTimeZone}>
                     <div className="formGroup">
                         <form className={styles.UserLocation}>
-                            <PlacesAutocomplete placeholder={"Remote location..."} defaultValue={"Stockholm, Sweden, Globuzzer"} />
+                            <PlacesAutocomplete placeholder={"Remote location..."} defaultValue={"Stockholm, Sweden, Globuzzer"} changeTime={changeToLocalTime} />
                         </form>
                         <div className={styles.DateWeekTimeDiv}>
                             <div className={styles.leftInput}>
