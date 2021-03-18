@@ -14,7 +14,7 @@ import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import { DateTime } from "luxon";
 
 const PlacesAutocomplete = (props) => {
-    const [offset, setOffsetMin] = useState(0)
+    const [offset, setOffsetMin] = useState(0);
 
     const { placeholder, defaultValue, changeTime } = props;
     const {
@@ -24,7 +24,7 @@ const PlacesAutocomplete = (props) => {
         setValue,
     } = usePlacesAutocomplete({ defaultValue: defaultValue });
 
-    console.log((DateTime.utc().plus({minutes:958}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)))
+    //console.log((DateTime.utc().plus({minutes:958}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)))
 
     const handleInput = (e) => {
         setValue(e.target.value);
@@ -39,8 +39,6 @@ const PlacesAutocomplete = (props) => {
         //     e.target.value = "";
         //     }
 
-      
-
         if (data.length > 0 ) {
             const parameter = {
                 placeId: data[0].place_id,
@@ -48,14 +46,13 @@ const PlacesAutocomplete = (props) => {
             };
             getDetails(parameter)
                 .then((details) => {
-                    console.log("Details: ", (details.utc_offset_minutes))
                     localStorage.setItem("offset", details.utc_offset_minutes)
                
                 })
                 .catch((error) => {
                     console.log("Error: ", error);
                 })
-
+            console.log(typeof(changeTime))
         }
     };
 
