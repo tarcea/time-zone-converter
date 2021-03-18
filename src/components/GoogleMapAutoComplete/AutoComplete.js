@@ -15,7 +15,7 @@ function AutoComplete() {
 
         return <div>
             <PlacesAutocomplete value={address} onchange={handleChange} onSelect={handleSelect}>
-                {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+                {({ getInputProps, suggestions, getSuggestionItemProps }) => (
                     <div>
                         <input
                             {...getInputProps({

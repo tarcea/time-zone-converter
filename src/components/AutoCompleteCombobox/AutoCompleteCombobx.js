@@ -14,9 +14,6 @@ import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 const PlacesAutocomplete = (props) => {
     
     const { placeholder, defaultValue } = props;
-    
-
-
     const {
         ready,
         value,
@@ -27,7 +24,6 @@ const PlacesAutocomplete = (props) => {
 
     const handleInput = (e) => {
         setValue(e.target.value);
-        // console.log(e.target.value)
     };
 
     const handleSelect = (val) => {
@@ -41,7 +37,6 @@ const PlacesAutocomplete = (props) => {
             e.target.value = "";
             }
     }
-
 
     const placeholderStyle = {
         width: "94%", 
@@ -61,7 +56,7 @@ const PlacesAutocomplete = (props) => {
                 value={value}
                 onChange={handleInput}
                 disabled={!ready}
-                placeholder={placeholder}x  
+                placeholder={placeholder}  
                 style={placeholderStyle} 
                 onClick={handleClick}    
                 />
