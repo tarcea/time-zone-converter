@@ -150,7 +150,6 @@ export default function TimeZoneConverterCard() {
                 <div className={styles.timeButtonsDiv}>
                     <TimeFormat onTimeChange={changeDefaultTime}/>
                 </div>
-
             </div>
         </div>
     )
