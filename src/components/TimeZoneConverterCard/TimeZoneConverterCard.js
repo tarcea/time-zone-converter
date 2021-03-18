@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './TimeZoneConverterCard.module.css';
 import Clock from "../Clock/Clock";
 import DatePicker from "react-datepicker";

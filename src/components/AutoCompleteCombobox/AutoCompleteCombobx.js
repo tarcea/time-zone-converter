@@ -34,10 +34,12 @@ const PlacesAutocomplete = (props) => {
         setValue(val, false);
     };
 
-    const handleComboboxOptionClick = (func) => {
+    const handleComboboxOptionClick = () => {
         // if (e.target.value !== "") {
         //     e.target.value = "";
         //     }
+
+      
 
         if (data.length > 0 ) {
             const parameter = {
@@ -47,17 +49,12 @@ const PlacesAutocomplete = (props) => {
             getDetails(parameter)
                 .then((details) => {
                     console.log("Details: ", (details.utc_offset_minutes))
-                    func(5)
-                    
-                    
+                    localStorage.setItem("offset", details.utc_offset_minutes)
+               
                 })
                 .catch((error) => {
                     console.log("Error: ", error);
                 })
-
-                
-
-            
 
         }
     };
