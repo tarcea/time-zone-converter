@@ -7,27 +7,15 @@ import {
     ComboboxOption,
     ComboboxOptionText,
 } from "@reach/combobox";
-import { DateTime } from 'luxon';
 import "@reach/combobox/styles.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
-import cityTimezones from 'city-timezones';
 
 const PlacesAutocomplete = (props) => {
     
     const { placeholder, defaultValue } = props;
     
-    function getTimeZone (city) {
-        const cityLookup = cityTimezones.lookupViaCity(city)[0].timezone; 
-        offsetDate(DateTime.now().setZone(cityLookup).offset)
-    }
-    function offsetDate(offset){
-        var d = new Date(new Date().getTime() + (offset * 1000));
-        var hrs = d.getUTCHours();
-        var mins = d.getUTCMinutes();
-        var secs = d.getUTCSeconds();
-    }
-    getTimeZone('Skopje')
+
 
     const {
         ready,
@@ -39,10 +27,13 @@ const PlacesAutocomplete = (props) => {
 
     const handleInput = (e) => {
         setValue(e.target.value);
+        // console.log(e.target.value)
     };
 
     const handleSelect = (val) => {
         setValue(val, false);
+        window.localStorage.selectedCity = val.split(",")[0];
+
     };
     
     const handleClick = (e) => {
