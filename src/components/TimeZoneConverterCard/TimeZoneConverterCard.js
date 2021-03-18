@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './TimeZoneConverterCard.module.css';
 import Clock from "../Clock/Clock";
 import DatePicker from "react-datepicker";
@@ -10,6 +10,7 @@ import PlacesAutocomplete from '../AutoCompleteCombobox/AutoCompleteCombobx'
 import { DateTime } from "luxon";
 import TimeFormat from '../TimeFormat/TimeFormat'
 import cityTimezones from 'city-timezones';
+import useLocalStorage from '../../Hooks/UseLocalStorage'
 
 export default function TimeZoneConverterCard() {
     const [startDate, setStartDate] = useState(new Date());
@@ -18,20 +19,24 @@ export default function TimeZoneConverterCard() {
     const [startDate2, setStartDate2] = useState(new Date());
     const [week, setWeek] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
     const [week2, setWeek2] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
-
-    function getTimeZone (city) {
-        const cityLookup = cityTimezones.lookupViaCity(city)[0].timezone; 
-        return offsetDate(DateTime.now().setZone(cityLookup).offset)
-    }
-
-    function offsetDate(offset){
-        var d = new Date(new Date().getTime() + (offset * 1000)).toString();
-        console.log(d.split(" ")[4])
-    }
     
-    window.addEventListener("storage",(e) => {
-        getTimeZone(window.localStorage.selectedCity)
-     });
+  
+    let offset = useLocalStorage("offset")[0]
+    console.log(typeof(offset))
+
+    // function getTimeZone (city) {
+    //     const cityLookup = cityTimezones.lookupViaCity(city)[0].timezone; 
+    //     return offsetDate(DateTime.now().setZone(cityLookup).offset)
+    // }
+
+    // function offsetDate(offset){
+    //     var d = new Date(new Date().getTime() + (offset * 1000)).toString();
+    //     console.log(d.split(" ")[4])
+    // }
+    
+    // window.addEventListener("storage",(e) => {
+    //     getTimeZone(window.localStorage.selectedCity)
+    //  });
  
     function getData(data) {
         const w = moment(data).format("W");
@@ -48,15 +53,14 @@ export default function TimeZoneConverterCard() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setlocalTime(e.target.value)
+        
     }
 
     const handleInput = (e) => {
         setlocalTime(e.target.value)
-        
     }
 
     const handleDoubleClick = (e) => {
-        console.log("doubleClick")
         setlocalTime("")
     }
 
@@ -69,6 +73,22 @@ export default function TimeZoneConverterCard() {
             setDestinationTime((DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_24_SIMPLE)))
         }
     }
+
+    const changeToLocalTime = (offset) => {
+        console.log(offset, "mmmmmmmmm")
+        setlocalTime((DateTime.utc().plus({minutes: offset}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)))
+    }
+
+    const handleAutoplacesClick = () => {
+        
+    }
+
+    useEffect(() => {
+        window.addEventListener('storage', ()=> { console.log(localStorage.getItem('offset'))})
+    
+      });
+
+
 
     return (
         <div className={styles.CardBackground}>
@@ -126,7 +146,7 @@ export default function TimeZoneConverterCard() {
                 <div className={styles.CurrentTimeZone}>
                     <div className="formGroup">
                         <form className={styles.UserLocation}>
-                            <PlacesAutocomplete placeholder={"Remote location..."} defaultValue={"Stockholm, Sweden, Globuzzer"} />
+                            <PlacesAutocomplete placeholder={"Remote location..."} defaultValue={"Stockholm, Sweden, Globuzzer"} changeTime={changeToLocalTime} onClick={handleAutoplacesClick} />
                         </form>
                         <div className={styles.DateWeekTimeDiv}>
                             <div className={styles.leftInput}>

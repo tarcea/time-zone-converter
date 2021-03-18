@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import './App.css';
 import NavBar from "./components/NavBar/navbar";
 import data from './dataJson';
@@ -6,8 +6,16 @@ import Background from './components/Background/Background'
 import TimeZoneConverterCard from './components/TimeZoneConverterCard/TimeZoneConverterCard';
 
 function App() {
-
   const citiesArray = data.cities.slice();
+
+
+
+
+  
+
+  //console.log(useLocalStorage("offset")[0], "lllllll")
+  
+
   return (
     <div>
       <NavBar />
