@@ -66,7 +66,7 @@ const PlacesAutocomplete = (props) => {
                 onChange={handleInput}
                 disabled={!ready}
                 placeholder={placeholder}
-                className={styles.importStyle}
+                className={styles.inputStyle}
             />
 
             <ComboboxPopover>
