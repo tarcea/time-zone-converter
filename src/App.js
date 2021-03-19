@@ -8,14 +8,6 @@ import TimeZoneConverterCard from './components/TimeZoneConverterCard/TimeZoneCo
 function App() {
   const citiesArray = data.cities.slice();
 
-
-
-
-  
-
-  //console.log(useLocalStorage("offset")[0], "lllllll")
-  
-
   return (
     <div>
       <NavBar />

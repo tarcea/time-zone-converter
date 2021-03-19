@@ -1,0 +1,11 @@
+.inputStyle {
+    width: 94%;
+    height: 40px;
+    float: left;
+    padding: 0% 2%;
+    background: transparent;
+    color: #797979;
+    font-weight: bold;
+    border: none;
+    font-size: 17px;
+}

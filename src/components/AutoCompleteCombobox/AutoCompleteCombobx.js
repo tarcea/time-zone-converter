@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useEffect } from 'react'
+import styles from './AutoCompleteCombobox.module.css'
 import usePlacesAutocomplete, { getDetails } from "use-places-autocomplete";
 import {
     Combobox,
@@ -14,7 +15,6 @@ import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 import { DateTime } from "luxon";
 
 const PlacesAutocomplete = (props) => {
-    const [offset, setOffsetMin] = useState(0);
 
     const { placeholder, defaultValue, changeTime } = props;
     const {
@@ -35,10 +35,6 @@ const PlacesAutocomplete = (props) => {
     };
 
     const handleComboboxOptionClick = () => {
-        // if (e.target.value !== "") {
-        //     e.target.value = "";
-        //     }
-
         if (data.length > 0 ) {
             const parameter = {
                 placeId: data[0].place_id,
@@ -52,23 +48,17 @@ const PlacesAutocomplete = (props) => {
                 .catch((error) => {
                     console.log("Error: ", error);
                 })
-            console.log(typeof(changeTime))
         }
     };
 
-    
-
-    const placeholderStyle = {
-        width: "94%",
-        height: "40px",
-        float: "left",
-        padding: "0% 2%",
-        background: "transparent",
-        color: "#797979",
-        fontWeight: "bold",
-        border: "none",
-        fontSize: "17px",
+    useEffect(() => {
+      
+    const suggestionDropdown = () => {
+      
     }
+  
+    });
+
     return (
         <Combobox onSelect={handleSelect} aria-labelledby="demo">
             <ComboboxInput
@@ -76,7 +66,7 @@ const PlacesAutocomplete = (props) => {
                 onChange={handleInput}
                 disabled={!ready}
                 placeholder={placeholder}
-                style={placeholderStyle}
+                className={styles.importStyle}
             />
 
             <ComboboxPopover>
@@ -94,3 +84,7 @@ const PlacesAutocomplete = (props) => {
 };
 
 export default PlacesAutocomplete;
+
+        // if (e.target.value !== "") {
+        //     e.target.value = "";
+        //     }
