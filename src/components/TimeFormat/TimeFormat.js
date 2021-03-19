@@ -13,7 +13,7 @@ export default function TimeFormat(props) {
 
     const {onTimeChange} = props
 
-    const changeColor = (timeFormat) => {
+    const handleClick = (timeFormat) => {
         if (timeFormat === 12) {
             onTimeChange(12)
             if (twelveHour.color === "#cc4747"){
@@ -45,8 +45,8 @@ export default function TimeFormat(props) {
 
     return (
         <div>
-            <button style={twelveHour} className={styles.TimeButton} onClick={(()=> {changeColor(12)})}>12</button>
-            <button style={twentyFourHour} className={styles.TimeButton} onClick={(()=> {changeColor(24)})}>24</button>
+            <button style={twelveHour} className={styles.TimeButton} onClick={(()=> {handleClick(12)})}>12</button>
+            <button style={twentyFourHour} className={styles.TimeButton} onClick={(()=> {handleClick(24)})}>24</button>
         </div>
     )
 }
