@@ -27,14 +27,17 @@ const PlacesAutocomplete = (props) => {
     //console.log((DateTime.utc().plus({minutes:958}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)))
 
     const handleInput = (e) => {
+   
         setValue(e.target.value);
     };
 
     const handleSelect = (val) => {
+      console.log("tessstt")
         setValue(val, false);
     };
 
     const handleComboboxOptionClick = () => {
+      console.log("kkkkkk")
         if (data.length > 0 ) {
             const parameter = {
                 placeId: data[0].place_id,
@@ -51,14 +54,6 @@ const PlacesAutocomplete = (props) => {
         }
     };
 
-    useEffect(() => {
-      
-    const suggestionDropdown = () => {
-      
-    }
-  
-    });
-
     return (
         <Combobox onSelect={handleSelect} aria-labelledby="demo">
             <ComboboxInput
@@ -73,7 +68,7 @@ const PlacesAutocomplete = (props) => {
                 <ComboboxList>
                     {status === "OK" &&
                         data.map(({ place_id, description }) => (
-                            <ComboboxOption key={place_id} value={description} onClick={handleComboboxOptionClick(changeTime)} style={{ overflow: "hidden", height: "15px", paddingTop: "5px", paddingBottom: "5px", borderBottom: "1px solid #CDCDCD", }}>
+                            <ComboboxOption key={place_id} value={description} onClick={handleComboboxOptionClick} style={{ overflow: "hidden", height: "15px", paddingTop: "5px", paddingBottom: "5px", borderBottom: "1px solid #CDCDCD", }}>
                                 <FontAwesomeIcon icon={faMapMarkerAlt} style={{ color: "#CDCDCD", paddingRight: "5px" }} />  <ComboboxOptionText />
                             </ComboboxOption>
                         ))}
