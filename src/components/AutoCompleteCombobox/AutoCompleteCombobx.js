@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styles from './AutoCompleteCombobox.module.css'
 import usePlacesAutocomplete, { getDetails } from "use-places-autocomplete";
 import {
@@ -12,7 +12,7 @@ import {
 import "@reach/combobox/styles.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
-import { DateTime } from "luxon";
+//import { DateTime } from "luxon";
 
 const PlacesAutocomplete = (props) => {
 
@@ -32,12 +32,10 @@ const PlacesAutocomplete = (props) => {
     };
 
     const handleSelect = (val) => {
-      console.log("tessstt")
         setValue(val, false);
     };
 
     const handleComboboxOptionClick = () => {
-      console.log("kkkkkk")
         if (data.length > 0 ) {
             const parameter = {
                 placeId: data[0].place_id,

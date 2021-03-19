@@ -9,8 +9,8 @@ import * as moment from 'moment';
 import PlacesAutocomplete from '../AutoCompleteCombobox/AutoCompleteCombobx'
 import { DateTime } from "luxon";
 import TimeFormat from '../TimeFormat/TimeFormat'
-import cityTimezones from 'city-timezones';
-import useLocalStorage from '../../Hooks/UseLocalStorage'
+//import cityTimezones from 'city-timezones';
+//import useLocalStorage from '../../Hooks/UseLocalStorage'
 
 export default function TimeZoneConverterCard() {
     const [startDate, setStartDate] = useState(new Date());
@@ -19,10 +19,11 @@ export default function TimeZoneConverterCard() {
     const [startDate2, setStartDate2] = useState(new Date());
     const [week, setWeek] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
     const [week2, setWeek2] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
+    const [localOffset, setLocalOffset] = useState(60)
     
   
-    let offset = useLocalStorage("offset")[0]
-    console.log(typeof(offset))
+    // let offset = useLocalStorage("offset")[0]
+    // console.log(typeof(offset))
 
     // function getTimeZone (city) {
     //     const cityLookup = cityTimezones.lookupViaCity(city)[0].timezone; 
@@ -84,10 +85,13 @@ export default function TimeZoneConverterCard() {
     }
 
     useEffect(() => {
-        window.addEventListener('storage', ()=> { console.log(localStorage.getItem('offset'))})
-    
+        window.addEventListener('storage', ()=> { 
+            setLocalOffset(localStorage.getItem('offset'))
+            console.log(localStorage.getItem('offset'), "aaaaaaaaaa")
+            console.log(localOffset)
+        })
+           console.log("hello")
       });
-
 
 
     return (
