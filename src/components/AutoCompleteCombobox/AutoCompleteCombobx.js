@@ -14,7 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
 
 const PlacesAutocomplete = (props) => {
-
+    
     const { placeholder, defaultValue, changeTime, inputBox } = props;
     const {
         ready,
@@ -24,13 +24,16 @@ const PlacesAutocomplete = (props) => {
     } = usePlacesAutocomplete({ defaultValue: defaultValue });
 
     const handleInput = (e) => {
-   
         setValue(e.target.value);
     };
 
     const handleSelect = (val) => {
         setValue(val, false);
     };
+    
+      const handleDoubleClick = (e) => {
+        e.target.value = '';
+    }
 
     const handleComboboxOptionClick = () => {
         if (data.length > 0 ) {
@@ -50,13 +53,14 @@ const PlacesAutocomplete = (props) => {
     };
 
     return (
-        <Combobox onSelect={handleSelect} aria-labelledby="demo">
+        <Combobox onSelect={handleSelect} aria-labelledby="demo"  className='cityInput'>
             <ComboboxInput
                 value={value}
                 onChange={handleInput}
                 disabled={!ready}
                 placeholder={placeholder}
                 className={styles.inputStyle}
+                onDoubleClick={handleDoubleClick}
             />
 
             <ComboboxPopover>

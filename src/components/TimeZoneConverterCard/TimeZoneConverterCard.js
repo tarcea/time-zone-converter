@@ -10,7 +10,6 @@ import PlacesAutocomplete from '../AutoCompleteCombobox/AutoCompleteCombobx'
 import { DateTime } from "luxon";
 import TimeFormat from '../TimeFormat/TimeFormat'
 
-
 export default function TimeZoneConverterCard() {
     const [startDate, setStartDate] = useState(new Date());
     const [localTime, setlocalTime] = useState(DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE))
@@ -18,7 +17,7 @@ export default function TimeZoneConverterCard() {
     const [startDate2, setStartDate2] = useState(new Date());
     const [week, setWeek] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
     const [week2, setWeek2] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
- 
+
     function getData(data) {
         const w = moment(data).format("W");
         setWeek(`w. ${parseInt(w) + 1}`);
@@ -39,9 +38,14 @@ export default function TimeZoneConverterCard() {
     const handleInput = (e) => {
         setlocalTime(e.target.value)
     }
+    
 
     const handleDoubleClick = (e) => {
-        setlocalTime("")
+        setlocalTime("0:0 AM")
+    }
+
+    const handleDoubleClick2 = (e) => {
+        setDestinationTime("0:0 AM")
     }
 
     const changeDefaultTime = (timeFormat) => {
@@ -77,7 +81,7 @@ export default function TimeZoneConverterCard() {
                 <div className={styles.CurrentTimeZone}>
                     <div className="formGroup">
                         <form className={styles.UserLocation}>
-                            <PlacesAutocomplete placeholder={"Your location ..."} defaultValue={"Stockholm"} changeTime={changeToLocalTime} inputBox={"local"}/>
+                            <PlacesAutocomplete placeholder={"Your location ..."} defaultValue={"Stockholm"} changeTime={changeToLocalTime} inputBox={"local"} />
                         </form>
                         <div className={styles.DateWeekTimeDiv}>
                             <div className={styles.leftInput}>
@@ -140,6 +144,7 @@ export default function TimeZoneConverterCard() {
                                     value={destinationTime} 
                                     onChange={handleInput}
                                     className={styles.TimeInput}
+                                    onDoubleClick={handleDoubleClick2}
                                     >
                                 </input>
                             </form>
