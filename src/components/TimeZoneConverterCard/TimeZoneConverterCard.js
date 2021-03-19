@@ -59,19 +59,15 @@ export default function TimeZoneConverterCard() {
     }
 
     const changeToLocalTime = (offset) => {
-        console.log(offset, "mmmmmmmmm")
         setlocalTime((DateTime.utc().plus({minutes: offset}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)))
     }
 
     const handleAutoplacesClick = () => {
-        
     }
 
     useEffect(() => {
         window.addEventListener('storage', ()=> { console.log(localStorage.getItem('offset'))})
-    
       });
-
 
 
     return (
