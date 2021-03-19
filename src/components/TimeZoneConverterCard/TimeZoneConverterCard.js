@@ -55,7 +55,6 @@ export default function TimeZoneConverterCard() {
     }
 
     const changeToLocalTime = (offset, inputBox) => {
-        console.log(offset, "offset")
         if(inputBox === "local"){
             setlocalTime((DateTime.utc().plus({minutes: offset}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)))
         }
@@ -98,7 +97,6 @@ export default function TimeZoneConverterCard() {
 
                             <form onSubmit={handleSubmit}>
                                 <input type="text" 
-                                    defaultValue={DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)} 
                                     placeholder="MM:HH" 
                                     value={localTime} 
                                     onChange={handleInput}
@@ -138,7 +136,6 @@ export default function TimeZoneConverterCard() {
                             
                             <form onSubmit={handleSubmit}>
                                 <input type="text" 
-                                    defaultValue={DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)} 
                                     placeholder="MM:HH" 
                                     value={destinationTime} 
                                     onChange={handleInput}
