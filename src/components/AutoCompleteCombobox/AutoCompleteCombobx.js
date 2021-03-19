@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styles from './AutoCompleteCombobox.module.css'
 import usePlacesAutocomplete, { getDetails } from "use-places-autocomplete";
 import {
@@ -12,11 +12,10 @@ import {
 import "@reach/combobox/styles.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons'
-import { DateTime } from "luxon";
 
 const PlacesAutocomplete = (props) => {
 
-    const { placeholder, defaultValue, changeTime } = props;
+    const { placeholder, defaultValue, changeTime, inputBox } = props;
     const {
         ready,
         value,
@@ -24,20 +23,16 @@ const PlacesAutocomplete = (props) => {
         setValue,
     } = usePlacesAutocomplete({ defaultValue: defaultValue });
 
-    //console.log((DateTime.utc().plus({minutes:958}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)))
-
     const handleInput = (e) => {
    
         setValue(e.target.value);
     };
 
     const handleSelect = (val) => {
-      console.log("tessstt")
         setValue(val, false);
     };
 
     const handleComboboxOptionClick = () => {
-      console.log("kkkkkk")
         if (data.length > 0 ) {
             const parameter = {
                 placeId: data[0].place_id,
@@ -45,7 +40,7 @@ const PlacesAutocomplete = (props) => {
             };
             getDetails(parameter)
                 .then((details) => {
-                    localStorage.setItem("offset", details.utc_offset_minutes)
+                    changeTime(details.utc_offset_minutes, inputBox)
                
                 })
                 .catch((error) => {
