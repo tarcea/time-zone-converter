@@ -9,7 +9,6 @@ import * as moment from 'moment';
 import PlacesAutocomplete from '../AutoCompleteCombobox/AutoCompleteCombobx'
 import { DateTime } from "luxon";
 import TimeFormat from '../TimeFormat/TimeFormat'
-import cityTimezones from 'city-timezones';
 import useLocalStorage from '../../Hooks/UseLocalStorage'
 
 export default function TimeZoneConverterCard() {
@@ -22,21 +21,6 @@ export default function TimeZoneConverterCard() {
     
   
     let offset = useLocalStorage("offset")[0]
-    console.log(typeof(offset))
-
-    // function getTimeZone (city) {
-    //     const cityLookup = cityTimezones.lookupViaCity(city)[0].timezone; 
-    //     return offsetDate(DateTime.now().setZone(cityLookup).offset)
-    // }
-
-    // function offsetDate(offset){
-    //     var d = new Date(new Date().getTime() + (offset * 1000)).toString();
-    //     console.log(d.split(" ")[4])
-    // }
-    
-    // window.addEventListener("storage",(e) => {
-    //     getTimeZone(window.localStorage.selectedCity)
-    //  });
  
     function getData(data) {
         const w = moment(data).format("W");
