@@ -26,4 +26,6 @@
 
 li {
   height: 30px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   }
