@@ -48,13 +48,33 @@ export default function TimeZoneConverterCard() {
         setDestinationTime("0:0 AM")
     }
 
+    const convertTime12to24 = (time12h) => {
+        const [time, modifier] = time12h.split(' ');
+        let [hours, minutes] = time.split(':');
+        if (hours === '12') {
+            hours = '00';
+        }
+        if (modifier === 'PM') {
+            hours = parseInt(hours, 10) + 12;
+        }
+            return `${hours}:${minutes}`;
+        }
+
+    const convertTime24to12= (time12h) => {
+        let hourEnd = time12h.indexOf(":");
+        let H = +time12h.substr(0, hourEnd);
+        let h = H % 12 || 12;
+        let ampm = (H < 12 || H === 24) ? "AM" : "PM";
+        return `${h + time12h.substr(hourEnd, 3)} ${ampm}`;
+    }
+    
     const changeDefaultTime = (timeFormat) => {
         if(timeFormat === 12){
-            setlocalTime((DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)))
-            setDestinationTime((DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE)))
+            setlocalTime(convertTime24to12(localTime))
+            setDestinationTime(convertTime24to12(destinationTime))
         }else if(timeFormat === 24){
-            setlocalTime((DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_24_SIMPLE)))
-            setDestinationTime((DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_24_SIMPLE)))
+            setlocalTime(convertTime12to24(localTime))
+            setDestinationTime(convertTime12to24(destinationTime))
         }
     }
 
