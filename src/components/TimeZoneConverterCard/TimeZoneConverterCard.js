@@ -3,8 +3,8 @@ import styles from './TimeZoneConverterCard.module.css';
 import Clock from "../Clock/Clock";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons'
 import * as moment from 'moment';
 import PlacesAutocomplete from '../AutoCompleteCombobox/AutoCompleteCombobx'
 import { DateTime } from "luxon";
@@ -178,7 +178,7 @@ export default function TimeZoneConverterCard() {
             </div>
 
             <div className={styles.CardFooter}>
-                <FontAwesomeIcon icon={faCalendarAlt} className={styles.CalendarIcon} />
+                {/* <FontAwesomeIcon icon={faCalendarAlt} className={styles.CalendarIcon} /> */}
                 <div className={styles.timeButtonsDiv}>
                     <TimeFormat onTimeChange={changeDefaultTime}/>
                 </div>

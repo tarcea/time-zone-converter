@@ -15,7 +15,7 @@ export default function Navbar() {
                         />
                     </a>
                 </li>
-                <li>Help</li>
+                <li> </li>
             </ul>
         </>
     )
