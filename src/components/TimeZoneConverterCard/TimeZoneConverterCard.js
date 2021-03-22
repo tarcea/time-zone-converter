@@ -41,11 +41,11 @@ export default function TimeZoneConverterCard() {
     
 
     const handleDoubleClick = (e) => {
-        setlocalTime("0:0 AM")
+        setlocalTime("")
     }
 
     const handleDoubleClick2 = (e) => {
-        setDestinationTime("0:0 AM")
+        setDestinationTime("")
     }
 
     const convertTime12to24 = (time12h) => {
