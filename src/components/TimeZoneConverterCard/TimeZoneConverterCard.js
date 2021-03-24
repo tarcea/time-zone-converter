@@ -10,6 +10,7 @@ import PlacesAutocomplete from '../AutoCompleteCombobox/AutoCompleteCombobx'
 import { DateTime } from "luxon";
 import TimeFormat from '../TimeFormat/TimeFormat'
 
+
 export default function TimeZoneConverterCard() {
     const [startDate, setStartDate] = useState(new Date());
     const [localTime, setlocalTime] = useState(DateTime.fromObject({zone: "Europe/Stockholm"}).setLocale('en-US').toLocaleString(DateTime.TIME_SIMPLE))
@@ -17,6 +18,100 @@ export default function TimeZoneConverterCard() {
     const [startDate2, setStartDate2] = useState(new Date());
     const [week, setWeek] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
     const [week2, setWeek2] = useState(`w. ${parseInt(moment(new Date()).format("W")) + 1}`);
+    const [oldValue, setOldValue] = useState(localTime)
+    // var formatTime = function (time) {
+    //     var hours = Number(time.substring(0,2));
+    //     var minutes = Number(time.substring(3,5));
+    //     var amPm = time.substring(6,8).toLowerCase();
+
+    //     if(amPm === "pm" && hours < 12) {
+    //         hours = hours+12;
+    //     } else if(amPm === "am" && hours === 12) {
+    //         hours = hours-12;
+    //     }
+
+    //     if(hours<10) { hours = "0" + hours; }
+    //     if(minutes<10) { minutes = "0" + minutes; }
+
+    //     return hours + ":" + minutes;
+    // };
+
+
+    const handleClick = (e) => {
+        //    console.log(e.target.value, "input value")
+        if (e.target.value) {
+            setOldValue(e.target.value)
+        }
+        //    console.log(oldTime, "oldTime before change")
+        //    setOldTime(e.target.value)
+        //    console.log(oldTime, "oldTime after change")
+    
+        }
+
+        const _handleKeyDown = (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                console.log(getHours(getMinutes(oldValue)))
+                setDestinationTime(e.target.value)
+            }
+        }
+    
+    
+    
+        const _handleKeyDown2 = (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                destinationTime(e.target.value)
+            }
+        }
+    function getMinutes (string) {
+        if (string) {
+            let timeString =  string.split(':');
+            let h = Number(timeString[0]);
+            let m = Number(timeString[1].split(' ')[0]);
+            let minutes = (h * 60) + m;
+            return minutes;
+        }
+       
+    }
+
+    function getHours (minutes) {
+        let h = minutes % 24;
+        let m = minutes % 60;
+        return `${h}:${m}`;
+    }
+
+    var recalculateLocal = function (value) {
+        let remoteM = getMinutes(destinationTime);
+        let localM = getMinutes(localTime);
+        let oldVal = getMinutes(value);
+        let result = ((oldVal - remoteM) + localM) 
+        
+        console.log(remoteM)
+        console.log(localM)
+        console.log(oldVal)   
+        console.log(result)
+
+    };
+    
+    recalculateLocal();
+
+    // var recalculateRemote = function () {
+    //     timeFormat = formatTime($("#localTimeInput").val());
+    //     $input = $("#localDateInput").val() + " " + timeFormat;
+    //     localTime = moment.tz($input, $localTimezone);
+    //     remoteTime = localTime.clone().tz($remoteTimezone);
+
+    //     $("#remoteDateInput").val(remoteTime.format($dateFormat));
+    //     $("#remoteWeekOutput").val("w. " + remoteTime.week());
+    //     $("#localWeekOutput").val("w. " + localTime.week());
+
+    //     if (format12) {
+    //         $("#remoteTimeInput").val(remoteTime.format($timeFormat12));
+    //     } else {
+    //         $("#remoteTimeInput").val(remoteTime.format($timeFormat24));
+    //     }
+    // };
 
     function getData(data) {
         const w = moment(data).format("W");
@@ -39,10 +134,16 @@ export default function TimeZoneConverterCard() {
         setlocalTime(e.target.value)
     }
     
+    
+    const handleInput2 = (e) => {
+        setDestinationTime(e.target.value)
+    }
 
     const handleDoubleClick = (e) => {
         setlocalTime("")
     }
+  
+
 
     const handleDoubleClick2 = (e) => {
         setDestinationTime("")
@@ -77,6 +178,7 @@ export default function TimeZoneConverterCard() {
             setDestinationTime(convertTime12to24(destinationTime))
         }
     }
+
 
     const changeToLocalTime = (offset, inputBox) => {
         if(inputBox === "local"){
@@ -126,6 +228,8 @@ export default function TimeZoneConverterCard() {
                                     onChange={handleInput}
                                     className={styles.TimeInput}
                                     onDoubleClick={handleDoubleClick}
+                                    onKeyDown={_handleKeyDown}
+                                    onClick={handleClick}
                                     >
                                 </input>
                             </form>
@@ -162,9 +266,10 @@ export default function TimeZoneConverterCard() {
                                 <input type="text" 
                                     placeholder="MM:HH" 
                                     value={destinationTime} 
-                                    onChange={handleInput}
+                                    onChange={handleInput2}
                                     className={styles.TimeInput}
                                     onDoubleClick={handleDoubleClick2}
+                                    onKeyDown={_handleKeyDown2}
                                     >
                                 </input>
                             </form>
